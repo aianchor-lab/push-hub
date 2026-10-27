@@ -34,15 +34,15 @@ To help us triage and resolve the issue quickly, please include as much of the f
 
 ## Response Process
 
-After you submit a report, we aim to follow these target timelines:
+push-hub is maintained by a small team, and security reports are handled on a best-effort basis. After you submit a report, we aim to follow these target timelines:
 
 | Step | Target |
 | ---- | ------ |
-| Acknowledgement of your report | Within 3 business days |
-| Initial assessment and severity evaluation | Within 7 days |
+| Acknowledgement of your report | Within 7 days |
+| Initial assessment and severity evaluation | Within 14 days |
 | Fix or mitigation released | Within 90 days, depending on severity and complexity |
 
-We will keep you informed of our progress and may ask for additional information during the investigation.
+These timelines are targets, not guarantees. We will keep you informed of our progress and may ask for additional information during the investigation. If you have not received a response within 7 days, please send a follow-up email.
 
 ## Disclosure Policy
 
