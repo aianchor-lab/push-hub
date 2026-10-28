@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 > **Status:** Draft
-> **Last updated:** 2026-10-27
+> **Last updated:** 2026-10-28
 >
 > This document is a working draft. Its contents, including licensing and scope, may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
 
@@ -53,11 +53,15 @@
 
   * **Commercial production use:** Requires a paid license.
 
-* **License (under consideration, TBD):**
+* **License:** **BSL 1.1 (Business Source License)** — see [LICENSE](../LICENSE).
 
-  * Either **AGPLv3** or **BSL 1.1 (Business Source License)** will be adopted.
+  * **Additional Use Grant:** Production use is free for Small Businesses (fewer than 100 employees and contractors, and less than US$1M in annual revenue, including affiliates) and for Non-Commercial Use. Offering push-hub to third parties as a hosted or managed service is not permitted.
 
-  * To centralize copyright management and commercial license sales, external contributors are required to sign a **CLA (Contributor License Agreement)**.
+  * **Change Date / Change License:** Each tagged release converts to the **Apache License 2.0** three years after its release date.
+
+  * AGPLv3 was also considered but not adopted: since push-hub runs inside the customer's own infrastructure, AGPL's network clause rarely applies, and it could not tie commercial production use to a paid license.
+
+  * To centralize copyright management and commercial license sales, external contributors are required to sign a **CLA (Contributor License Agreement)** — see [CLA.md](../CLA.md) and [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## 4. Technical Requirements
 
@@ -91,7 +95,7 @@ The following items are undecided and will be updated in this document once deci
 
 | # | Topic | Current status |
 |---|-------|----------------|
-| 1 | License | Choosing between AGPLv3 and BSL 1.1 |
+| 1 | License | **Decided:** BSL 1.1 (Change License: Apache 2.0 after 3 years) |
 | 2 | Commercial license pricing and terms | Not yet defined |
 | 3 | Web admin console (Dashboard UI) | To be decided based on feedback after the initial release |
 
@@ -100,3 +104,4 @@ The following items are undecided and will be updated in this document once deci
 | Date | Change |
 |------|--------|
 | 2026-10-27 | Initial draft |
+| 2026-10-28 | Adopt BSL 1.1 as license; add CLA and CONTRIBUTING |
