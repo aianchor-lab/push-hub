@@ -3,9 +3,10 @@ License text copyright (c) 2024 MariaDB plc, All Rights Reserved.
 
 Parameters
 
-Licensor:             aianchor-lab
+Licensor:             Atsushi Inoue
 Licensed Work:        push-hub
-                      The Licensed Work is (c) 2026 aianchor-lab
+                      The Licensed Work is (c) 2026 Atsushi Inoue
+                      (https://github.com/aianchor-lab)
 Additional Use Grant: You may make production use of the Licensed Work,
                       provided that (a) Your use is by a Small Business or is
                       a Non-Commercial Use, and (b) Your use does not include
@@ -37,8 +38,10 @@ Additional Use Grant: You may make production use of the Licensed Work,
 
 Change Date:          Three years from the date on which a specific version of
                       the Licensed Work is first made publicly available as a
-                      tagged release in the Licensor's official repository
-                      (https://github.com/aianchor-lab/push-hub). For any
+                      tagged release in the official repository of the
+                      Licensed Work designated by the Licensor, including any
+                      successor repository (currently
+                      https://github.com/aianchor-lab/push-hub). For any
                       portion of the Licensed Work that is not included in a
                       tagged release, the Change Date is three years from the
                       date of the first tagged release that includes it.
