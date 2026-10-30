@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 > **Status:** Draft
-> **Last updated:** 2026-10-29
+> **Last updated:** 2026-10-30
 >
 > This document is a working draft. Its contents, including licensing and scope, may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
 
@@ -120,10 +120,10 @@ The following items are undecided and will be updated in this document once deci
 | # | Topic | Current status |
 |---|-------|----------------|
 | 1 | License | **Decided:** BSL 1.1 (Change License: Apache 2.0 after 3 years) |
-| 2 | Commercial license pricing and terms | Not yet defined |
+| 2 | Commercial license pricing and terms | Key terms outlined in [commercial-license-terms.md](commercial-license-terms.md); pricing not yet defined |
 | 3 | Web admin console (Dashboard UI) | To be decided based on feedback after the initial release |
 | 4 | Corporate CLA | Not yet drafted; contributions on behalf of companies are not accepted until it exists |
-| 5 | Timing of commercial license sales | While the Licensor is an individual, contractual liability falls on the individual; consider starting sales only after incorporation |
+| 5 | Timing of commercial license sales | **Direction:** small deals may be sold as an individual, with a liability cap (fees paid in the prior 12 months), exclusion of indirect damages, no SLA, and liability insurance. Incorporate before signing large or high-risk deals (see [incorporation triggers](commercial-license-terms.md#5-incorporation-triggers)). The contract value threshold is TBD |
 | 6 | Legal review of LICENSE parameters and CLA | Required before accepting external PRs |
 
 ## 6. Change Log
@@ -133,3 +133,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-10-27 | Initial draft |
 | 2026-10-28 | Adopt BSL 1.1 as license; add CLA and CONTRIBUTING |
 | 2026-10-29 | Set individual Licensor; switch to license-type CLA with successors, moral rights and governing law clauses and CLA Assistant; add future procedures and open questions |
+| 2026-10-30 | Add commercial license terms outline; set direction for liability limitation and incorporation timing |
