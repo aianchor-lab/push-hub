@@ -32,7 +32,41 @@ push-hub runs entirely inside your infrastructure:
 
 ## Architecture
 
-<!-- TODO(#9): Mermaid architecture diagram (data flow inside the customer's VPC) -->
+```mermaid
+flowchart LR
+    subgraph vpc["Your VPC / on-premises"]
+        app["Your application server"]
+        subgraph ph["push-hub (single binary)"]
+            api["api"]
+            scheduler["scheduler"]
+            worker["worker"]
+        end
+        db[("PostgreSQL<br/>tokens · queue · logs · analytics")]
+        obs["Prometheus / Grafana<br/>log collector"]
+    end
+    subgraph vendors["Apple / Google"]
+        apns["APNs"]
+        fcm["FCM"]
+    end
+    devices["End-user devices"]
+
+    app -- "REST JSON API" --> api
+    api --> db
+    scheduler --> db
+    db --> worker
+    worker -- "APNs provider API (HTTP/2)" --> apns
+    worker -- "FCM HTTP v1 API" --> fcm
+    apns --> devices
+    fcm --> devices
+    devices -. "open events (optional)" .-> api
+    obs -. "scrapes /metrics, collects stdout logs" .-> ph
+```
+
+* **Delivery flow:** your application server calls the REST API, `api` enqueues a job in PostgreSQL, and `worker` picks it up and sends it to APNs / FCM. For scheduled deliveries, `scheduler` enqueues the job when it is due.
+* **Storage:** device tokens, recipient attributes, notification content, delivery logs, and analytics all stay in your own PostgreSQL.
+* **The only traffic leaving your network is `worker` → APNs / FCM.** There is no telemetry and no license check.
+* **Open tracking (optional):** APNs and FCM do not report opens, so your app reports them to `api` through `POST /v1/events`.
+* **Monitoring:** your own Prometheus and log collector pull metrics and logs from push-hub.
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the architecture direction.
 
