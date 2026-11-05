@@ -80,7 +80,15 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the architecture direction.
 
 ## Observability
 
-<!-- TODO(#11): monitoring support (/metrics, JSON logs, /healthz, /readyz, Grafana dashboard) -->
+> **Planned — not implemented yet.**
+
+* **Metrics:** Prometheus-format endpoint at `/metrics`.
+* **Logs:** structured JSON logs written to stdout, ready for Datadog, CloudWatch, ELK, and other log collectors.
+* **Health checks:** `/healthz` (liveness) and `/readyz` (readiness) for Kubernetes probes and load balancers.
+* **Grafana dashboard:** a sample dashboard definition (JSON) will be included.
+* **Separate admin port:** `/metrics`, `/healthz`, and `/readyz` are served on an admin port separate from the API port, so they are not exposed with the public API.
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#25-observability) for the design direction.
 
 ## Support the Project
 
