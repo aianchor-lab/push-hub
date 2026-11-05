@@ -239,6 +239,7 @@ All errors use the same format:
 |--------|--------|---------|
 | 400 | `invalid_request` | Malformed JSON or invalid parameters |
 | 401 | `unauthorized` | Missing or invalid API key |
+| 403 | `forbidden` | The API key does not have permission for this operation |
 | 404 | `not_found` | The referenced message or device does not exist |
 | 429 | `rate_limited` | Too many requests; retry after the `Retry-After` header |
 | 500 | `internal_error` | Unexpected server error |
