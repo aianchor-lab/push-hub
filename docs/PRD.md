@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 > **Status:** Draft
-> **Last updated:** 2026-10-30
+> **Last updated:** 2026-11-05
 >
 > This document is a working draft. Its contents, including licensing and scope, may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
 
@@ -89,6 +89,8 @@
 
 ## 4. Technical Requirements
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the architecture direction that implements these requirements.
+
 ### 4.1 Core Architecture
 
 * **Deployment:** Single-command startup via Docker / `docker-compose.yml`.
@@ -134,3 +136,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-10-28 | Adopt BSL 1.1 as license; add CLA and CONTRIBUTING |
 | 2026-10-29 | Set individual Licensor; switch to license-type CLA with successors, moral rights and governing law clauses and CLA Assistant; add future procedures and open questions |
 | 2026-10-30 | Add commercial license terms outline; set direction for liability limitation and incorporation timing |
+| 2026-11-05 | Add architecture draft (ARCHITECTURE.md) and WIP README |
