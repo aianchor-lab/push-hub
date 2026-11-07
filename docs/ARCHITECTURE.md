@@ -1,7 +1,7 @@
 # Architecture
 
 > **Status:** Draft
-> **Last updated:** 2026-11-05
+> **Last updated:** 2026-11-06
 >
 > This document is a working draft of the architecture direction for push-hub. No production code exists yet, and the design may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#9-open-questions). For product goals and licensing, see the [PRD](PRD.md).
 
@@ -46,6 +46,22 @@ The same container image is used for every role. On Kubernetes, each role runs a
 
 * APNs keys (`.p8`) and FCM service account JSON are passed through environment variables or mounted files.
 * Encryption with a KMS is optional and can be added later through a pluggable interface.
+
+### 2.5 Observability
+
+* **Admin port:** `/metrics`, `/healthz`, and `/readyz` are served on an admin port separate from the API port, so they are not exposed with the public API. Every role (`api`, `worker`, `scheduler`, `all`) uses the same admin port. The port number is TBD.
+* **Metrics:** Prometheus-format endpoint at `/metrics`, scraped by the customer's own Prometheus (or a compatible agent).
+* **Logs:** structured JSON logs written to stdout (12-factor). Collection is left to the customer's log collector (Datadog, CloudWatch, ELK, etc.).
+* **Health checks:**
+
+  | Endpoint | Probe | Returns OK when |
+  |----------|-------|-----------------|
+  | `/healthz` | Liveness | The process is running |
+  | `/readyz` | Readiness | PostgreSQL is reachable and database migrations are complete |
+
+  The same checks apply to every role.
+* **Dashboard:** a sample Grafana dashboard definition (JSON) is included.
+* **No push from push-hub:** push-hub never sends metrics or logs anywhere; the customer's tools pull or collect them.
 
 ## 3. Feature Mapping
 
@@ -199,3 +215,4 @@ Stripe Checkout / Invoicing
 | 3 | Adding ClickHouse for analytics | Future option, depending on scale |
 | 4 | Recommended configurations per scale | TBD. To be measured on the reference environment |
 | 5 | Open tracking: SDK vs. published API only | TBD |
+| 6 | Admin port number, metric names and labels | TBD |

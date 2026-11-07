@@ -137,3 +137,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-10-29 | Set individual Licensor; switch to license-type CLA with successors, moral rights and governing law clauses and CLA Assistant; add future procedures and open questions |
 | 2026-10-30 | Add commercial license terms outline; set direction for liability limitation and incorporation timing |
 | 2026-11-05 | Add architecture draft (ARCHITECTURE.md) and WIP README |
+| 2026-11-06 | Add observability plan to README and ARCHITECTURE.md |
