@@ -250,7 +250,18 @@ All errors use the same format:
 
 ## Support the Project
 
-<!-- TODO(#12): Star request and link to the demand validation form -->
+push-hub is in the demand validation phase: whether we build it depends on whether enough teams actually need it. You can help in two ways.
+
+* **⭐ Star this repository.** Stars are one of the signals we use to decide whether to start production development. Starring also lets you follow progress.
+* **📝 Answer the [3-minute survey](https://forms.gle/TODO).** Tell us how you send push notifications today and what is holding you back. <!-- TODO(#14): replace with the actual Google Form URL -->
+
+We especially want to hear from teams that:
+
+* cannot send customer data or device tokens to a push SaaS for compliance or contractual reasons,
+* are paying a growing "SaaS Tax" on push delivery volume, or
+* need to run push delivery on-premises or in an air-gapped environment.
+
+Survey answers are used only to evaluate demand for push-hub. We will not contact you unless you leave contact details and ask us to.
 
 ## License
 
