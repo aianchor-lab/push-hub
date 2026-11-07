@@ -72,27 +72,214 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the architecture direction.
 
 ## Quick Start
 
-<!-- TODO(#10): docker-compose.yml startup example -->
+> **Preview:** no image has been published yet. This shows the planned startup experience and does not work today.
+
+push-hub and PostgreSQL start with a single `docker-compose.yml`:
+
+```yaml
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: pushhub
+      POSTGRES_PASSWORD: pushhub
+      POSTGRES_DB: pushhub
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pushhub"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  push-hub:
+    image: ghcr.io/aianchor-lab/push-hub:latest
+    command: ["all"] # api + worker + scheduler in one process
+    ports:
+      - "8080:8080"
+    environment:
+      PUSHHUB_DATABASE_URL: postgres://pushhub:pushhub@postgres:5432/pushhub?sslmode=disable
+      PUSHHUB_API_KEY: change-me
+      # APNs (token-based authentication with a .p8 key)
+      PUSHHUB_APNS_KEY_FILE: /run/secrets/apns.p8
+      PUSHHUB_APNS_KEY_ID: ABC123DEFG
+      PUSHHUB_APNS_TEAM_ID: DEF123GHIJ
+      PUSHHUB_APNS_TOPIC: com.example.app
+      # FCM (service account JSON)
+      PUSHHUB_FCM_CREDENTIALS_FILE: /run/secrets/fcm.json
+    volumes:
+      - ./secrets:/run/secrets:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+```
+
+```sh
+docker compose up -d
+curl http://localhost:8080/healthz
+# {"status":"ok"}
+```
+
+Docker Compose is intended for trials and small deployments. For production, use the Helm chart with a managed PostgreSQL outside the cluster (see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#5-distribution)).
 
 ## API
 
-<!-- TODO(#10): API response specification mock -->
+> **Draft:** this is a mock specification published for feedback. It may change before the first release.
+
+* Base path: `/v1`. Requests and responses are JSON.
+* Authentication: `Authorization: Bearer <PUSHHUB_API_KEY>`. API keys are for server-to-server use only; browser-safe authentication is still TBD.
+
+### Register a device — `POST /v1/devices`
+
+Registers a device token, or updates it if it already exists.
+
+```http
+POST /v1/devices
+Authorization: Bearer change-me
+Content-Type: application/json
+
+{
+  "platform": "ios",
+  "token": "a1b2c3d4e5f6...",
+  "user_id": "user_123",
+  "attributes": { "plan": "pro", "locale": "en-US" }
+}
+```
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": "dev_01JC8Z5Q7X3M2N4P6R8T0V2W4Y",
+  "platform": "ios",
+  "user_id": "user_123",
+  "active": true,
+  "created_at": "2026-11-05T12:00:00Z"
+}
+```
+
+`platform` is `ios` or `android`. Tokens rejected by APNs / FCM are deactivated automatically (`"active": false`).
+
+### Send a notification — `POST /v1/messages`
+
+Delivery is asynchronous: the API enqueues the message and returns immediately, and workers send it to APNs / FCM.
+
+```http
+POST /v1/messages
+Authorization: Bearer change-me
+Content-Type: application/json
+
+{
+  "to": { "user_ids": ["user_123", "user_456"] },
+  "notification": {
+    "title": "Your order has shipped",
+    "body": "Tap to track your package.",
+    "image_url": "https://assets.example.com/shipping.png"
+  },
+  "data": { "order_id": "ord_789" },
+  "scheduled_at": null
+}
+```
+
+```http
+HTTP/1.1 202 Accepted
+Content-Type: application/json
+
+{
+  "id": "msg_01JC8Z6A1B2C3D4E5F6G7H8J9K",
+  "status": "queued",
+  "recipients": 3,
+  "scheduled_at": null,
+  "created_at": "2026-11-05T12:00:01Z"
+}
+```
+
+`recipients` is the number of active devices targeted. Set `scheduled_at` (ISO 8601) to deliver later; the status is then `scheduled`.
+
+### Report an open event — `POST /v1/events` (optional)
+
+APNs and FCM do not report opens, so your app reports them here.
+
+```http
+POST /v1/events
+Authorization: Bearer change-me
+Content-Type: application/json
+
+{
+  "type": "opened",
+  "message_id": "msg_01JC8Z6A1B2C3D4E5F6G7H8J9K",
+  "device_id": "dev_01JC8Z5Q7X3M2N4P6R8T0V2W4Y",
+  "occurred_at": "2026-11-05T12:03:00Z"
+}
+```
+
+```http
+HTTP/1.1 204 No Content
+```
+
+### Errors
+
+All errors use the same format:
+
+```json
+{
+  "error": {
+    "code": "invalid_request",
+    "message": "platform must be one of: ios, android",
+    "request_id": "req_01JC8Z7M9N0P1Q2R3S4T5U6V7W"
+  }
+}
+```
+
+| Status | `code` | Meaning |
+|--------|--------|---------|
+| 400 | `invalid_request` | Malformed JSON or invalid parameters |
+| 401 | `unauthorized` | Missing or invalid API key |
+| 403 | `forbidden` | The API key does not have permission for this operation |
+| 404 | `not_found` | The referenced message or device does not exist |
+| 429 | `rate_limited` | Too many requests; retry after the `Retry-After` header |
+| 500 | `internal_error` | Unexpected server error |
 
 ## Observability
 
-> **Planned — not implemented yet.**
+> **Planned:** monitoring support is not implemented yet. Details may change before the first release.
 
-* **Metrics:** Prometheus-format endpoint at `/metrics`.
-* **Logs:** structured JSON logs written to stdout, ready for Datadog, CloudWatch, ELK, and other log collectors.
-* **Health checks:** `/healthz` (liveness) and `/readyz` (readiness) for Kubernetes probes and load balancers.
-* **Grafana dashboard:** a sample dashboard definition (JSON) will be included.
-* **Separate admin port:** `/metrics`, `/healthz`, and `/readyz` are served on an admin port separate from the API port, so they are not exposed with the public API.
+push-hub needs no proprietary agent. It exposes metrics, logs, and health checks in standard formats so they plug into the monitoring stack you already run (Prometheus / Grafana, Datadog, CloudWatch, ELK).
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#25-observability) for the design direction.
+| Feature | Endpoint / output | Notes |
+|---------|-------------------|-------|
+| Metrics | `GET /metrics` | Prometheus text format. Examples: messages sent and failed (per platform), queue depth, APNs / FCM latency |
+| Logs | stdout, JSON lines | One structured event per line. Includes `request_id`, so log lines can be matched to API error responses |
+| Liveness | `GET /healthz` | The process is running. Returns `{"status":"ok"}` |
+| Readiness | `GET /readyz` | Returns 200 only when push-hub can serve traffic (e.g. the database is reachable). For Kubernetes readiness probes |
+| Dashboard | Grafana JSON | A sample Grafana dashboard definition will be included |
+
+Example log line:
+
+```json
+{"ts":"2026-11-05T12:00:02Z","level":"info","msg":"notification delivered","message_id":"msg_01JC8Z6A1B2C3D4E5F6G7H8J9K","platform":"ios","request_id":"req_01JC8Z7M9N0P1Q2R3S4T5U6V7W"}
+```
+
+Metric names and log fields are not final. If you need specific metrics or integrations, let us know in an [issue](https://github.com/aianchor-lab/push-hub/issues) or the [survey](#support-the-project).
 
 ## Support the Project
 
-<!-- TODO(#12): Star request and link to the demand validation form -->
+push-hub is in the demand validation phase: whether we build it depends on whether enough teams actually need it. You can help in two ways.
+
+* **⭐ Star this repository.** Stars are one of the signals we use to decide whether to start production development. Starring also lets you follow progress.
+* **📝 Answer the [3-minute survey](https://forms.gle/TODO).** Tell us how you send push notifications today and what is holding you back. <!-- TODO(#14): replace with the actual Google Form URL -->
+
+We especially want to hear from teams that:
+
+* cannot send customer data or device tokens to a push SaaS for compliance or contractual reasons,
+* are paying a growing "SaaS Tax" on push delivery volume, or
+* need to run push delivery on-premises or in an air-gapped environment.
+
+Survey answers are used only to evaluate demand for push-hub. We will not contact you unless you leave contact details and ask us to.
 
 ## License
 
