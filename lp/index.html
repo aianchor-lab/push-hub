@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>push-hub — Self-hosted push notifications</title>
+  <meta name="description" content="push-hub is a self-hosted push notification delivery engine. Deploy it inside your own VPC or on-premises and send APNs / FCM notifications without handing your data to a SaaS provider.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="alternate" hreflang="en" href="/">
+  <link rel="alternate" hreflang="ja" href="ja/index.html">
+  <link rel="alternate" hreflang="x-default" href="/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="push-hub — Self-hosted push notifications">
+  <meta property="og:description" content="Send APNs / FCM notifications from your own VPC or on-premises. No SaaS in between, no telemetry, no license server.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="push-hub home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0fa3a3"/><circle cx="16" cy="16" r="3.5" fill="#fff"/><path d="M10 10a8.5 8.5 0 0 0 0 12M22 10a8.5 8.5 0 0 1 0 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+        push-hub
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a class="hide-sm" href="#governance">Data governance</a>
+        <a class="hide-sm" href="#license">License</a>
+        <a href="https://github.com/aianchor-lab/push-hub">GitHub</a>
+        <a class="lang" href="ja/index.html" hreflang="ja" lang="ja">日本語</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container hero">
+      <p class="badge"><span class="dot" aria-hidden="true"></span>Work in progress · demand validation · source-available</p>
+      <h1>Push notifications that never leave your infrastructure.</h1>
+      <p class="lead">push-hub is a self-hosted push notification delivery engine for enterprises. Deploy it inside your own VPC or on-premises, and send APNs / FCM notifications without handing your data to a SaaS provider.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/aianchor-lab/push-hub">⭐ Star on GitHub</a>
+        <!-- TODO(#14): replace with the actual Google Form URL -->
+        <a class="btn" href="https://forms.gle/TODO">📝 Take the 3-minute survey</a>
+      </div>
+    </div>
+
+    <section id="problem" aria-labelledby="problem-title">
+      <div class="container">
+        <p class="eyebrow">The problem</p>
+        <h2 id="problem-title">Push SaaS is easy to start with, and hard to justify as you grow.</h2>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="num">01</div>
+            <h3>Data sovereignty and compliance</h3>
+            <p>Customer behavior logs, notification bodies, and device tokens are stored on an external provider's servers, often in another country.</p>
+          </article>
+          <article class="card">
+            <div class="num">02</div>
+            <h3>The "SaaS Tax"</h3>
+            <p>Pay-per-use pricing grows with delivery volume, and becomes a major cost at millions to hundreds of millions of notifications per month.</p>
+          </article>
+          <article class="card">
+            <div class="num">03</div>
+            <h3>Vendor lock-in</h3>
+            <p>Your delivery pipeline, device data, and analytics depend on a single provider.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="who" aria-labelledby="who-title">
+      <div class="container">
+        <p class="eyebrow">Who it's for</p>
+        <h2 id="who-title">Built for teams that can't, or won't, hand push data to a third party.</h2>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>B2B enterprises and security-focused startups</h3>
+            <p>Healthcare, finance, SaaS, government, and similar sectors that cannot send customer data or push tokens to external SaaS providers.</p>
+          </article>
+          <article class="card">
+            <h3>Development and DevOps teams at scale</h3>
+            <p>Teams delivering millions to hundreds of millions of push notifications per month who want predictable costs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="governance" aria-labelledby="governance-title">
+      <div class="container">
+        <p class="eyebrow">Data governance by design</p>
+        <h2 id="governance-title">push-hub runs entirely inside your infrastructure.</h2>
+        <ul class="checklist">
+          <li><div><strong>Your data stays in your database.</strong><span>Device tokens, recipient attributes, notification content, delivery logs, and analytics live in your own PostgreSQL.</span></div></li>
+          <li><div><strong>The only outbound traffic goes to APNs and FCM.</strong><span>No telemetry, usage statistics, or crash reports are sent anywhere.</span></div></li>
+          <li><div><strong>No license server.</strong><span>push-hub never phones home to check a license, so it also works in air-gapped environments.</span></div></li>
+          <li><div><strong>Runs on any cloud or on-premises.</strong><span>The only required dependency is PostgreSQL. No cloud-specific services are used.</span></div></li>
+          <li><div><strong>Standard observability.</strong><span>Metrics, logs, and health checks plug into Prometheus, Grafana, Datadog, CloudWatch, or ELK.</span></div></li>
+        </ul>
+        <div class="note">
+          <p><strong>What push-hub cannot change:</strong> to deliver a notification, its content and the device token must be sent to Apple (APNs) or Google (FCM). This is true for every push provider, including SaaS. push-hub removes the additional third party in between, but it does not remove Apple or Google from the path.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture" aria-labelledby="architecture-title">
+      <div class="container">
+        <p class="eyebrow">Architecture</p>
+        <h2 id="architecture-title">A single binary and PostgreSQL. That's it.</h2>
+        <p class="section-lead">Your application server calls the REST API, <code>api</code> enqueues a job in PostgreSQL, and <code>worker</code> sends it to APNs / FCM. <code>scheduler</code> handles scheduled deliveries.</p>
+        <figure class="diagram" style="margin:0">
+          <svg viewBox="0 0 760 300" role="img" aria-labelledby="diagram-title">
+            <title id="diagram-title">push-hub runs inside your VPC next to PostgreSQL; the only outbound traffic goes from worker to APNs and FCM.</title>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z"/></marker>
+            </defs>
+            <rect class="zone" x="10" y="16" width="530" height="270" rx="12"/>
+            <text class="zone-label" x="26" y="38">Your VPC / on-premises</text>
+            <rect class="vendor" x="575" y="16" width="175" height="180" rx="12"/>
+            <text class="label" x="591" y="38">Apple / Google</text>
+
+            <rect class="box" x="28" y="62" width="140" height="52" rx="8"/>
+            <text x="98" y="86" text-anchor="middle">Your app server</text>
+            <text class="label" x="98" y="103" text-anchor="middle">REST JSON API</text>
+
+            <rect class="core" x="208" y="52" width="160" height="110" rx="10"/>
+            <text x="288" y="84" text-anchor="middle" font-weight="700">push-hub</text>
+            <text class="label" x="288" y="106" text-anchor="middle">single binary</text>
+            <text class="label" x="288" y="132" text-anchor="middle">api · scheduler · worker</text>
+
+            <rect class="box" x="208" y="206" width="160" height="56" rx="8"/>
+            <text x="288" y="230" text-anchor="middle">PostgreSQL</text>
+            <text class="label" x="288" y="248" text-anchor="middle">tokens · queue · logs</text>
+
+            <rect class="box" x="398" y="206" width="126" height="56" rx="8"/>
+            <text x="461" y="230" text-anchor="middle">Prometheus</text>
+            <text class="label" x="461" y="248" text-anchor="middle">logs · metrics</text>
+
+            <rect class="box" x="595" y="58" width="135" height="40" rx="8"/>
+            <text x="662" y="83" text-anchor="middle">APNs</text>
+            <rect class="box" x="595" y="128" width="135" height="40" rx="8"/>
+            <text x="662" y="153" text-anchor="middle">FCM</text>
+
+            <rect class="box" x="595" y="226" width="135" height="44" rx="8"/>
+            <text x="662" y="253" text-anchor="middle">End-user devices</text>
+
+            <path class="arrow" d="M168 88H204"/>
+            <path class="arrow" d="M276 162V202" marker-start="url(#arrow)"/>
+            <path class="arrow arrow-dash" d="M461 206V150H372"/>
+            <path class="arrow arrow-out" d="M368 78H591"/>
+            <path class="arrow arrow-out" d="M368 136H480Q490 136 500 140L591 148"/>
+            <path class="arrow" d="M662 168V222"/>
+            <text class="zone-label" x="380" y="70">only outbound traffic</text>
+          </svg>
+          <figcaption class="diagram-caption">APNs and FCM do not report opens, so your app can optionally report them to <code>POST /v1/events</code>.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="quickstart" aria-labelledby="quickstart-title">
+      <div class="container">
+        <p class="eyebrow">Quick start · preview</p>
+        <h2 id="quickstart-title">One <code>docker compose up</code>.</h2>
+        <p class="section-lead">No image has been published yet. This shows the planned startup experience and does not work today. For production, a Helm chart with a managed PostgreSQL is planned.</p>
+        <div class="code-stack">
+<pre><code>services:
+  postgres:
+    image: postgres:17
+  push-hub:
+    image: ghcr.io/aianchor-lab/push-hub:latest
+    command: ["all"] # api + worker + scheduler
+    ports: ["8080:8080"]
+    environment:
+      PUSHHUB_DATABASE_URL: postgres://pushhub:pushhub@postgres:5432/pushhub
+      PUSHHUB_APNS_KEY_FILE: /run/secrets/apns.p8
+      PUSHHUB_FCM_CREDENTIALS_FILE: /run/secrets/fcm.json</code></pre>
+<pre><code>$ docker compose up -d
+$ curl http://localhost:8080/healthz
+{"status":"ok"}</code></pre>
+        </div>
+        <p><a href="https://github.com/aianchor-lab/push-hub#quick-start">Full example and draft API spec on GitHub →</a></p>
+      </div>
+    </section>
+
+    <section id="license" aria-labelledby="license-title">
+      <div class="container">
+        <p class="eyebrow">License</p>
+        <h2 id="license-title">Source-available under BSL 1.1.</h2>
+        <p class="section-lead">push-hub is source-available, not Open Source. Each tagged release automatically converts to the Apache License 2.0 three years after its release date.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Your use</th><th scope="col">License</th></tr></thead>
+            <tbody>
+              <tr><td>Non-production use (development, testing, evaluation, PoC)</td><td><span class="pill pill-free">Free</span></td></tr>
+              <tr><td>Production use by a Small Business (fewer than 100 employees and contractors, and less than US$1M in annual revenue, including affiliates)</td><td><span class="pill pill-free">Free</span></td></tr>
+              <tr><td>Non-Commercial Use</td><td><span class="pill pill-free">Free</span></td></tr>
+              <tr><td>Any other production use</td><td><span class="pill pill-paid">Commercial license</span></td></tr>
+              <tr><td>Offering push-hub to third parties as a hosted or managed service</td><td><span class="pill pill-no">Not permitted</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fine">This is a summary. See the <a href="https://github.com/aianchor-lab/push-hub/blob/main/LICENSE">LICENSE</a> for the exact terms.</p>
+      </div>
+    </section>
+
+    <!-- Placeholder: the real pre-order button and click tracking are added in #16 -->
+    <section id="preorder" aria-labelledby="preorder-title">
+      <div class="container preorder">
+        <div>
+          <p class="eyebrow">Commercial license</p>
+          <h2 id="preorder-title">Pre-order — coming soon.</h2>
+          <p class="section-lead" style="margin-bottom:0">Interested in a commercial license? Contact <a href="mailto:aianchor.lab@gmail.com">aianchor.lab@gmail.com</a>.</p>
+        </div>
+        <a class="btn" role="link" aria-disabled="true">Pre-order (coming soon)</a>
+      </div>
+    </section>
+
+    <section id="support" class="final" aria-labelledby="support-title">
+      <div class="container">
+        <p class="eyebrow">Support the project</p>
+        <h2 id="support-title">Whether we build it depends on whether you need it.</h2>
+        <p class="section-lead">We especially want to hear from teams that:</p>
+        <ul>
+          <li>cannot send customer data or device tokens to a push SaaS for compliance or contractual reasons,</li>
+          <li>are paying a growing "SaaS Tax" on push delivery volume, or</li>
+          <li>need to run push delivery on-premises or in an air-gapped environment.</li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://github.com/aianchor-lab/push-hub">⭐ Star on GitHub</a>
+          <!-- TODO(#14): replace with the actual Google Form URL -->
+          <a class="btn" href="https://forms.gle/TODO">📝 Take the 3-minute survey</a>
+        </div>
+        <p class="fine">Survey answers are used only to evaluate demand for push-hub. We will not contact you unless you leave contact details and ask us to.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 push-hub · BSL 1.1</span>
+      <nav aria-label="Footer">
+        <a href="https://github.com/aianchor-lab/push-hub">GitHub</a>
+        <a href="https://github.com/aianchor-lab/push-hub/blob/main/LICENSE">License</a>
+        <a href="https://github.com/aianchor-lab/push-hub/blob/main/SECURITY.md">Security</a>
+        <a href="mailto:aianchor.lab@gmail.com">Contact</a>
+        <a href="ja/index.html" hreflang="ja" lang="ja">日本語</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
