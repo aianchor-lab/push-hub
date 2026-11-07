@@ -6,10 +6,9 @@ Pre-launch landing page for push-hub, used for demand validation. Plain static H
 lp/
 ├── index.html        # English (default)
 ├── ja/index.html     # Japanese
-├── assets/
-│   ├── styles.css    # shared styles (light / dark)
-│   └── favicon.svg
-└── vercel.json       # clean URLs and security headers
+└── assets/
+    ├── styles.css    # shared styles (black / green-cyan)
+    └── favicon.svg
 ```
 
 Copy follows the repository [README](../README.md). When the README changes, update both `index.html` and `ja/index.html`.
@@ -22,14 +21,21 @@ python3 -m http.server -d lp 8000
 # http://localhost:8000/ja/  (Japanese)
 ```
 
-All paths are relative, so you can also open `lp/index.html` directly in a browser.
+All paths are relative, so you can also open `lp/index.html` directly in a browser. Relative paths also keep the page working under the GitHub Pages project path (`/push-hub/`).
 
-## Deploy to Vercel
+## Deploy (GitHub Pages)
 
-1. In Vercel, **Add New → Project** and import `aianchor-lab/push-hub`.
-2. Set **Root Directory** to `lp`.
-3. Set **Framework Preset** to **Other**. Leave Build Command and Output Directory empty.
-4. Deploy. Pushes to `main` deploy to production; pull requests get preview URLs.
+The page is deployed by [`.github/workflows/pages.yml`](../.github/workflows/pages.yml), which uploads the `lp/` directory to GitHub Pages.
+
+* **Trigger:** pushes to `main` that change `lp/**` or the workflow, or a manual run (**Actions → Deploy landing page → Run workflow**).
+* **URL:** `https://aianchor-lab.github.io/push-hub/` until a custom domain is set.
+
+One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+### Custom domain (optional)
+
+1. Buy the domain and add DNS records at the registrar: a `CNAME` record pointing a subdomain (e.g. `www`) to `aianchor-lab.github.io`, or `A` / `AAAA` records for the apex domain (see the [GitHub docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)).
+2. Set the domain in **Settings → Pages → Custom domain** and enable **Enforce HTTPS**. With a GitHub Actions deployment, no `CNAME` file is needed.
 
 ## TODO
 
