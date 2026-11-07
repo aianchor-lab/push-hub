@@ -246,7 +246,25 @@ All errors use the same format:
 
 ## Observability
 
-<!-- TODO(#11): monitoring support (/metrics, JSON logs, /healthz, /readyz, Grafana dashboard) -->
+> **Planned:** monitoring support is not implemented yet. Details may change before the first release.
+
+push-hub needs no proprietary agent. It exposes metrics, logs, and health checks in standard formats so they plug into the monitoring stack you already run (Prometheus / Grafana, Datadog, CloudWatch, ELK).
+
+| Feature | Endpoint / output | Notes |
+|---------|-------------------|-------|
+| Metrics | `GET /metrics` | Prometheus text format. Examples: messages sent and failed (per platform), queue depth, APNs / FCM latency |
+| Logs | stdout, JSON lines | One structured event per line. Includes `request_id`, so log lines can be matched to API error responses |
+| Liveness | `GET /healthz` | The process is running. Returns `{"status":"ok"}` |
+| Readiness | `GET /readyz` | Returns 200 only when push-hub can serve traffic (e.g. the database is reachable). For Kubernetes readiness probes |
+| Dashboard | Grafana JSON | A sample Grafana dashboard definition will be included |
+
+Example log line:
+
+```json
+{"ts":"2026-11-05T12:00:02Z","level":"info","msg":"notification delivered","message_id":"msg_01JC8Z6A1B2C3D4E5F6G7H8J9K","platform":"ios","request_id":"req_01JC8Z7M9N0P1Q2R3S4T5U6V7W"}
+```
+
+Metric names and log fields are not final. If you need specific metrics or integrations, let us know in an [issue](https://github.com/aianchor-lab/push-hub/issues) or the [survey](#support-the-project).
 
 ## Support the Project
 
