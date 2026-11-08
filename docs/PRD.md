@@ -13,13 +13,9 @@
 
 * **Vision:** Provide a robust, lightweight push delivery platform that can be deployed with a single command inside a company's own infrastructure (VPC / on-premises), for companies struggling with the high cost (pay-per-use pricing) and the data governance / regional constraints of SaaS-based push delivery services.
 
-* **Team & constraints:**
+* **Approach:** Strictly follow a **"Demand Validation First"** approach: evaluate demand before seriously writing production code.
 
-  * Solo development (side project, worked on during weekends).
-
-  * Zero capacity for support / maintenance operations (no SLA; relies on community contributions). Replies to issues and questions are not guaranteed.
-
-  * Strictly follow a **"Demand Validation First"** approach: evaluate demand before seriously writing production code.
+* **Support:** Best-effort, with no SLA. See the [Support Policy](../README.md#support-policy).
 
 ## 2. Target Personas & Pain Points
 
@@ -55,7 +51,7 @@
 
 * **License:** **BSL 1.1 (Business Source License)** — see [LICENSE](../LICENSE). push-hub is described as **source-available**, not Open Source. The license text is used unmodified except for its parameters.
 
-  * **Licensor / copyright notice:** For now the Licensor is an individual, since no legal entity exists yet: `Copyright (c) 2026 Atsushi Inoue (https://github.com/aianchor-lab)`.
+  * **Copyright notice:** `Copyright (c) 2026 Atsushi Inoue (https://github.com/aianchor-lab)`.
 
   * **Additional Use Grant:** Production use is free for Small Businesses (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates) and for Non-Commercial Use. Offering push-hub to third parties as a hosted or managed service is not permitted.
 
@@ -69,7 +65,7 @@
 
   * The CLA allows sublicensing on any terms, including commercial licenses.
 
-  * The license extends to the Project Owner's **successors and assigns**, which covers future incorporation or acquisition.
+  * The license extends to the Project Owner's **successors and assigns**.
 
   * Contributors agree not to exercise their **moral rights** (Articles 18–20 of the Japanese Copyright Act), so contributions can be modified and included in commercial versions.
 
@@ -80,12 +76,6 @@
   * The CLA is versioned. External PRs are not accepted until a version reviewed by legal counsel has been published.
 
   * Signatures are collected per PR with **CLA Assistant**. It must be installed before the first external PR is accepted, and every PR goes through it, including small ones. Code posted in issues is not incorporated.
-
-* **Future procedures:**
-
-  * **Incorporation:** Changing the copyright notice is not enough. A copyright assignment agreement from the individual to the company is required. It must specify the assigned works, explicitly include the rights under Articles 27 and 28 of the Japanese Copyright Act, and include a covenant not to exercise moral rights. The agreement must also transfer the individual's contractual positions: the contributor CLAs, any commercial license agreements, and the Licensor position for released versions. The official repository designation should also be updated. Tax implications are to be confirmed with a tax accountant.
-
-  * **Acquisition:** Thanks to the successors-and-assigns clause, contributor consent is not required. Keeping complete CLA signature records is essential. Because the CLA is a non-exclusive license, a buyer may ask to switch to assignment-type agreements.
 
 ## 4. Technical Requirements
 
@@ -122,11 +112,10 @@ The following items are undecided and will be updated in this document once deci
 | # | Topic | Current status |
 |---|-------|----------------|
 | 1 | License | **Decided:** BSL 1.1 (Change License: Apache 2.0 after 3 years) |
-| 2 | Commercial license pricing and terms | Key terms outlined in [commercial-license-terms.md](commercial-license-terms.md); pricing not yet defined |
+| 2 | Commercial license pricing and terms | Not yet defined |
 | 3 | Web admin console (Dashboard UI) | To be decided based on feedback after the initial release |
 | 4 | Corporate CLA | Not yet drafted; contributions on behalf of companies are not accepted until it exists |
-| 5 | Timing of commercial license sales | **Direction:** small deals may be sold as an individual, with a liability cap (fees paid in the prior 12 months), exclusion of indirect damages, no SLA, and liability insurance. Incorporate before signing large or high-risk deals (see [incorporation triggers](commercial-license-terms.md#5-incorporation-triggers)). The contract value threshold is TBD |
-| 6 | Legal review of LICENSE parameters and CLA | Required before accepting external PRs |
+| 5 | Legal review of LICENSE parameters and CLA | Required before accepting external PRs |
 
 ## 6. Change Log
 
@@ -134,8 +123,7 @@ The following items are undecided and will be updated in this document once deci
 |------|--------|
 | 2026-10-27 | Initial draft |
 | 2026-10-28 | Adopt BSL 1.1 as license; add CLA and CONTRIBUTING |
-| 2026-10-29 | Set individual Licensor; switch to license-type CLA with successors, moral rights and governing law clauses and CLA Assistant; add future procedures and open questions |
-| 2026-10-30 | Add commercial license terms outline; set direction for liability limitation and incorporation timing |
+| 2026-10-29 | Switch to license-type CLA with successors, moral rights and governing law clauses and CLA Assistant; add open questions |
 | 2026-11-05 | Add architecture draft (ARCHITECTURE.md) and WIP README |
 | 2026-11-06 | Add observability plan to README and ARCHITECTURE.md |
-| 2026-11-08 | Raise the Small Business revenue limit to US$10M; state that replies to issues and questions are not guaranteed |
+| 2026-11-08 | Raise the Small Business revenue limit to US$10M; state that replies to issues and questions are not guaranteed; move operating and commercial notes out of this document |
