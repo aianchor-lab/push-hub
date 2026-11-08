@@ -281,6 +281,8 @@ We especially want to hear from teams that:
 
 Survey answers are used only to evaluate demand for push-hub. We will not contact you unless you leave contact details and ask us to.
 
+Project announcements are posted on X: [@pushhub_dev](https://x.com/pushhub_dev).
+
 ## License
 
 push-hub is **source-available** software licensed under the [Business Source License 1.1](LICENSE) (BSL 1.1).
