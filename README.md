@@ -299,7 +299,7 @@ See [LICENSE](LICENSE) for the exact terms. For commercial licensing, please con
 
 ## Support Policy
 
-push-hub is developed as a side project. GitHub issues and questions are handled on a best-effort basis: we do not guarantee a reply, a fix, or a response time, and there is no support SLA. To report a vulnerability, follow [SECURITY.md](SECURITY.md).
+GitHub issues and questions are handled on a best-effort basis. Replies, fixes, and response times are not guaranteed, and there is no support SLA. To report a vulnerability, follow [SECURITY.md](SECURITY.md).
 
 ## Contributing
 
