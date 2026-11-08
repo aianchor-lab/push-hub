@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 > **Status:** Draft
-> **Last updated:** 2026-11-05
+> **Last updated:** 2026-11-08
 >
 > This document is a working draft. Its contents, including licensing and scope, may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
 
@@ -17,7 +17,7 @@
 
   * Solo development (side project, worked on during weekends).
 
-  * Zero capacity for support / maintenance operations (no SLA; relies on community contributions).
+  * Zero capacity for support / maintenance operations (no SLA; relies on community contributions). Replies to issues and questions are not guaranteed.
 
   * Strictly follow a **"Demand Validation First"** approach: evaluate demand before seriously writing production code.
 
@@ -57,7 +57,7 @@
 
   * **Licensor / copyright notice:** For now the Licensor is an individual, since no legal entity exists yet: `Copyright (c) 2026 Atsushi Inoue (https://github.com/aianchor-lab)`.
 
-  * **Additional Use Grant:** Production use is free for Small Businesses (fewer than 100 employees and contractors, and less than US$1M in annual revenue, including affiliates) and for Non-Commercial Use. Offering push-hub to third parties as a hosted or managed service is not permitted.
+  * **Additional Use Grant:** Production use is free for Small Businesses (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates) and for Non-Commercial Use. Offering push-hub to third parties as a hosted or managed service is not permitted.
 
   * **Change Date / Change License:** Each tagged release converts to the **Apache License 2.0** three years after its release date.
 
@@ -138,3 +138,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-10-30 | Add commercial license terms outline; set direction for liability limitation and incorporation timing |
 | 2026-11-05 | Add architecture draft (ARCHITECTURE.md) and WIP README |
 | 2026-11-06 | Add observability plan to README and ARCHITECTURE.md |
+| 2026-11-08 | Raise the Small Business revenue limit to US$10M; state that replies to issues and questions are not guaranteed |
