@@ -271,7 +271,7 @@ Metric names and log fields are not final. If you need specific metrics or integ
 push-hub is in the demand validation phase: whether we build it depends on whether enough teams actually need it. You can help in two ways.
 
 * **⭐ Star this repository.** Stars are one of the signals we use to decide whether to start production development. Starring also lets you follow progress.
-* **📝 Answer the [3-minute survey](https://forms.gle/TODO).** Tell us how you send push notifications today and what is holding you back. <!-- TODO(#14): replace with the actual Google Form URL -->
+* **📝 Answer the [3-minute survey](https://docs.google.com/forms/d/e/1FAIpQLSfy40dCmbFtYYkesl8lL9IoW6KyR2qLuC6Wm4MJOnWRVuYOQQ/viewform?usp=dialog).** Tell us how you send push notifications today and what is holding you back.
 
 We especially want to hear from teams that:
 
