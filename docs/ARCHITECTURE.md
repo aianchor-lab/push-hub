@@ -204,7 +204,7 @@ Stripe Checkout / Invoicing
 * Separate API and worker roles (like Langfuse web / worker and GitLab Rails / Sidekiq).
 * **Start with PostgreSQL only** (like Langfuse v2), with room to add ClickHouse and others later.
 * Publish recommended configurations per scale, in notifications per month.
-* **No Omnibus-style all-in-one package.** The maintenance cost is too high for a solo project.
+* **No Omnibus-style all-in-one package.** The maintenance cost is too high.
 
 ## 9. Open Questions
 

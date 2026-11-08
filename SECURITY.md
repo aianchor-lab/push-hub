@@ -34,7 +34,7 @@ To help us triage and resolve the issue quickly, please include as much of the f
 
 ## Response Process
 
-push-hub is maintained by a small team, and security reports are handled on a best-effort basis. After you submit a report, we aim to follow these target timelines:
+Security reports are handled on a best-effort basis. After you submit a report, we aim to follow these target timelines:
 
 | Step | Target |
 | ---- | ------ |

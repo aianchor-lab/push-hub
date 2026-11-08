@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to push-hub!
 
-push-hub is developed as a side project by a small team. Issues and pull requests are reviewed on a best-effort basis. We do not guarantee a reply, a fix, or a response time, and there is no support SLA.
+Issues and pull requests are reviewed on a best-effort basis. We do not guarantee a reply, a fix, or a response time, and there is no support SLA.
 
 ## License
 
