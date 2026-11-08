@@ -8,7 +8,8 @@ lp/
 ├── ja/index.html     # Japanese
 └── assets/
     ├── styles.css    # shared styles (black / green-cyan)
-    └── favicon.svg
+    ├── favicon.svg
+    └── og-image.png  # 1200x630 social preview
 ```
 
 Copy follows the repository [README](../README.md). When the README changes, update both `index.html` and `ja/index.html`.
@@ -40,4 +41,4 @@ One-time setup: **Settings → Pages → Build and deployment → Source: GitHub
 ## TODO
 
 * Replace the pre-order placeholder (`#preorder`) with the real button and click tracking (#16).
-* Once the production domain is fixed, make the `hreflang` links absolute and add `og:url` / `og:image`.
+* Once the production domain is fixed, make the `hreflang` links absolute and update the `og:url` / `og:image` URLs, which currently point to GitHub Pages.
