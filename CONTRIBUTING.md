@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to push-hub!
 
-push-hub is developed as a side project by a small team. Issues and pull requests are reviewed on a best-effort basis, and there is no guaranteed response time or support SLA.
+push-hub is developed as a side project by a small team. Issues and pull requests are reviewed on a best-effort basis. We do not guarantee a reply, a fix, or a response time, and there is no support SLA.
 
 ## License
 
@@ -10,7 +10,7 @@ push-hub is **source-available** software licensed under the [Business Source Li
 
 Copyright (c) 2026 Atsushi Inoue (https://github.com/aianchor-lab)
 
-- **Free to use:** non-production use (development, testing, evaluation, PoC), production use by Small Businesses (fewer than 100 employees and contractors, and less than US$1M in annual revenue, including affiliates), and Non-Commercial Use.
+- **Free to use:** non-production use (development, testing, evaluation, PoC), production use by Small Businesses (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates), and Non-Commercial Use.
 - **Not permitted without a commercial license:** any other production use, and offering push-hub to third parties as a hosted or managed service.
 - **Becomes Open Source:** each tagged release automatically converts to the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) three years after its release date.
 

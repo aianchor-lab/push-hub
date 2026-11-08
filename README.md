@@ -288,7 +288,7 @@ push-hub is **source-available** software licensed under the [Business Source Li
 | Your use | License required |
 |----------|------------------|
 | Non-production use (development, testing, evaluation, PoC) | Free |
-| Production use by a Small Business (fewer than 100 employees and contractors, and less than US$1M in annual revenue, including affiliates) | Free |
+| Production use by a Small Business (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates) | Free |
 | Non-Commercial Use | Free |
 | Any other production use | Commercial license |
 | Offering push-hub to third parties as a hosted or managed service | Not permitted under the BSL; requires a separate agreement |
@@ -296,6 +296,10 @@ push-hub is **source-available** software licensed under the [Business Source Li
 Each tagged release automatically converts to the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) three years after its release date.
 
 See [LICENSE](LICENSE) for the exact terms. For commercial licensing, please contact **aianchor.lab@gmail.com**.
+
+## Support Policy
+
+push-hub is developed as a side project. GitHub issues and questions are handled on a best-effort basis: we do not guarantee a reply, a fix, or a response time, and there is no support SLA. To report a vulnerability, follow [SECURITY.md](SECURITY.md).
 
 ## Contributing
 
