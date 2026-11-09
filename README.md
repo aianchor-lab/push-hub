@@ -303,6 +303,17 @@ See [LICENSE](LICENSE) for the exact terms. For commercial licensing, please con
 
 GitHub issues and questions are handled on a best-effort basis. Replies, fixes, and response times are not guaranteed, and there is no support SLA. To report a vulnerability, follow [SECURITY.md](SECURITY.md).
 
+## Project Continuity
+
+> **Draft:** these commitments are a draft and may change before the first release.
+
+push-hub is developed by an individual, and we cannot guarantee how long active development will continue. Instead of promising that, we make sure you are not stranded if it stops:
+
+* **It keeps running without us.** push-hub depends only on your PostgreSQL. There is no license server, telemetry, or other connection to us, so your deployment keeps working even if the project ends.
+* **Early open-source release on discontinuation.** If we stop developing push-hub, we will release the latest version under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) at that time, instead of waiting for the three-year Change Date. You can then maintain, fork, and run it yourself without restriction.
+* **Advance notice.** We will announce a discontinuation at least 6 months in advance, in this repository and on X ([@pushhub_dev](https://x.com/pushhub_dev)).
+* **Short commercial terms.** Commercial licenses are sold for one year at a time, with no multi-year prepayment. If we discontinue push-hub during a paid term, the unused portion will be refunded.
+
 ## Contributing
 
 Contributions require agreement to the [Contributor License Agreement](CLA.md). See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
