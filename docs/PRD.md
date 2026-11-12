@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 > **Status:** Draft
-> **Last updated:** 2026-11-08
+> **Last updated:** 2026-11-12
 >
 > This document is a working draft. Its contents, including licensing and scope, may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
 
@@ -17,7 +17,7 @@
 
 * **Support:** Best-effort, with no SLA. See the [Support Policy](../README.md#support-policy).
 
-* **Continuity:** Continued development is not guaranteed. Customers are protected instead by early Apache 2.0 release on discontinuation, at least 6 months' notice, and one-year commercial terms with pro-rata refunds. See [Project Continuity](../README.md#project-continuity).
+* **Continuity:** Continued development is not guaranteed. Because push-hub is Apache 2.0 and never connects to us, users can keep running and maintaining it themselves. Discontinuation will be announced at least 6 months in advance. See [Project Continuity](../README.md#project-continuity).
 
 ## 2. Target Personas & Pain Points
 
@@ -45,23 +45,19 @@
 
 ## 3. Business Model & Licensing
 
-* **Model:** Dual Licensing / Source Available
+* **Model:** Open Source first. Adoption and real-world usage come before revenue. Revenue, if any, comes later from corporate sponsorship and paid help with deployments. An open-core commercial edition may be considered once demand is proven.
 
-  * **Personal / PoC / non-commercial use:** Free of charge.
+* **License:** **Apache License 2.0** — see [LICENSE](../LICENSE) and [NOTICE](../NOTICE). Free for any use, including commercial production use.
 
-  * **Commercial production use:** Requires a paid license.
+  * **Copyright notice:** `Copyright 2026 Atsushi Inoue (https://github.com/aianchor-lab)`.
 
-* **License:** **BSL 1.1 (Business Source License)** — see [LICENSE](../LICENSE). push-hub is described as **source-available**, not Open Source. The license text is used unmodified except for its parameters.
+  * **Why Apache 2.0:** many enterprise legal teams pre-approve OSI-approved licenses, while a source-available license requires a case-by-case review that slows adoption. Apache 2.0 also includes an explicit patent grant.
 
-  * **Copyright notice:** `Copyright (c) 2026 Atsushi Inoue (https://github.com/aianchor-lab)`.
+  * **Hosted offerings by third parties are allowed.** push-hub's value is running inside the user's own infrastructure, so a third-party SaaS serves a different market. The project name is protected by trademark rather than by the license.
 
-  * **Additional Use Grant:** Production use is free for Small Businesses (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates) and for Non-Commercial Use. Offering push-hub to third parties as a hosted or managed service is not permitted.
+  * **Alternatives considered:** BSL 1.1 was adopted on 2026-10-28 and replaced on 2026-11-12, because it slows enterprise adoption, which is the priority at this stage. AGPLv3 was not adopted because many enterprises do not allow it. Licenses that forbid competing services (FSL, Elastic License) are not Open Source and have the same adoption problem as the BSL.
 
-  * **Change Date / Change License:** Each tagged release converts to the **Apache License 2.0** three years after its release date.
-
-  * AGPLv3 was also considered but not adopted: since push-hub runs inside the customer's own infrastructure, AGPL's network clause rarely applies, and it could not tie commercial production use to a paid license.
-
-* **CLA (Contributor License Agreement):** Required for all external contributors so that contributions can be included in commercial licenses. See [CLA.md](../CLA.md) and [CONTRIBUTING.md](../CONTRIBUTING.md).
+* **CLA (Contributor License Agreement):** Required for all external contributors, so that contributions can also be included in a possible future commercial edition. See [CLA.md](../CLA.md) and [CONTRIBUTING.md](../CONTRIBUTING.md).
 
   * **License-type CLA** (based on the Apache ICLA): contributors keep their copyright and grant a non-exclusive license.
 
@@ -70,8 +66,6 @@
   * The license extends to the Project Owner's **successors and assigns**.
 
   * Contributors agree not to exercise their **moral rights** (Articles 18–20 of the Japanese Copyright Act), so contributions can be modified and included in commercial versions.
-
-  * The CLA notes that contributions become available under the Change License after the Change Date. This is information only and places no obligation on the Project Owner.
 
   * Governing law is Japan, and the Tokyo District Court has exclusive jurisdiction.
 
@@ -113,12 +107,12 @@ The following items are undecided and will be updated in this document once deci
 
 | # | Topic | Current status |
 |---|-------|----------------|
-| 1 | License | **Decided:** BSL 1.1 (Change License: Apache 2.0 after 3 years) |
-| 2 | Commercial license pricing and terms | Not yet defined |
+| 1 | License | **Decided:** Apache License 2.0 (changed from BSL 1.1 on 2026-11-12) |
+| 2 | Monetization (corporate sponsorship, paid deployment help, possible open-core edition) | Not yet defined; revisit once real-world usage is established |
 | 3 | Web admin console (Dashboard UI) | To be decided based on feedback after the initial release |
 | 4 | Corporate CLA | Not yet drafted; contributions on behalf of companies are not accepted until it exists |
-| 5 | Legal review of LICENSE parameters and CLA | Required before accepting external PRs |
-| 6 | Legal form of the continuity commitments (early Apache 2.0 release, notice period, refunds) | Draft in README; to be reflected in the commercial license agreement after legal review |
+| 5 | Legal review of the CLA | Required before accepting external PRs |
+| 6 | Trademark protection for the project name | Under consideration |
 
 ## 6. Change Log
 
@@ -131,3 +125,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-11-06 | Add observability plan to README and ARCHITECTURE.md |
 | 2026-11-08 | Raise the Small Business revenue limit to US$10M; state that replies to issues and questions are not guaranteed; move operating and commercial notes out of this document |
 | 2026-11-09 | Add project continuity commitments (README) and related open question |
+| 2026-11-12 | Change the license from BSL 1.1 to Apache License 2.0; keep the CLA; simplify the continuity commitments |

@@ -1,12 +1,12 @@
 # push-hub Individual Contributor License Agreement
 
-> **Version:** 0.1 (Draft), 2026-10-29
+> **Version:** 0.2 (Draft), 2026-11-12
 >
 > **Status:** Draft — this agreement has not yet been reviewed by legal counsel. External contributions will not be accepted until a reviewed version has been published. Any change to this Agreement will be published under a new version number, and each signature applies to the version that was signed.
 
 Thank you for your interest in contributing to push-hub (the "Project"), maintained by Atsushi Inoue (https://github.com/aianchor-lab).
 
-This Contributor License Agreement ("Agreement") documents the rights granted by contributors to the Project Owner. The Project is distributed under the [Business Source License 1.1](LICENSE), a source-available license, and may also be offered under commercial licenses. This Agreement allows the Project Owner to do so with your Contributions as well.
+This Contributor License Agreement ("Agreement") documents the rights granted by contributors to the Project Owner. The Project is distributed under the [Apache License, Version 2.0](LICENSE), an open source license. The Project Owner may also offer the Project, or future editions of it, under other terms, including commercial licenses. This Agreement allows the Project Owner to do so with your Contributions as well.
 
 This Agreement is a license, not an assignment: **You keep the copyright in Your Contributions**, and You remain free to use them for any other purpose.
 
@@ -26,15 +26,15 @@ Except for the licenses granted in this Agreement, You reserve all right, title,
 
 Subject to the terms and conditions of this Agreement, You hereby grant to the Project Owner and to recipients of software distributed by the Project Owner a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare derivative works of, publicly display, publicly perform, sublicense, and distribute Your Contributions and such derivative works.
 
-This license includes the right for the Project Owner to sublicense and distribute Your Contributions, and works that include them, under any terms of its choosing, including the Business Source License, any Change License specified therein, open source licenses, and proprietary or commercial licenses, whether or not for a fee.
+This license includes the right for the Project Owner to sublicense and distribute Your Contributions, and works that include them, under any terms of its choosing, including the Apache License, Version 2.0, other open source licenses, and proprietary or commercial licenses, whether or not for a fee.
 
 ## 4. Moral Rights
 
 To the extent permitted by applicable law, You agree not to exercise, against the Project Owner or any recipient or licensee of software distributed by the Project Owner, any moral rights You have in Your Contributions, including the rights of making public, attribution, and integrity under Articles 18 to 20 of the Copyright Act of Japan and any equivalent rights under the laws of other jurisdictions. Where such rights cannot be waived or made subject to such a covenant, You consent to any act permitted under this Agreement, including modifying Your Contributions and distributing them without attribution.
 
-## 5. Notice Regarding the Change License
+## 5. Notice Regarding the Project License
 
-Each version of the Project is distributed under the license terms stated in the LICENSE file of that version. As of the date of this Agreement, those terms are the Business Source License 1.1, under which each version becomes available under its Change License (currently the Apache License, Version 2.0) on its Change Date. Your Contributions included in a version will therefore become available under that version's Change License in the same way.
+Each version of the Project is distributed under the license terms stated in the LICENSE file of that version. As of the date of this Agreement, those terms are the Apache License, Version 2.0. Your Contributions included in a version will therefore be available to everyone under that license.
 
 This Section is provided for Your information only. It does not oblige the Project Owner to release any version or Contribution under any particular license or at any particular time, or to include any Contribution in the Project.
 

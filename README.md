@@ -3,7 +3,7 @@
 A self-hosted push notification delivery engine for enterprises. Deploy it inside your own VPC or on-premises, and send APNs / FCM notifications without handing your data to a SaaS provider.
 
 > **Status: Work in progress — demand validation.**
-> push-hub is in the demand validation phase. There is no production code yet, and the scope described here may change. push-hub is **source-available** under the [Business Source License 1.1](LICENSE), not Open Source.
+> push-hub is in the demand validation phase. There is no production code yet, and the scope described here may change. push-hub is **Open Source** under the [Apache License 2.0](LICENSE).
 
 ## The Problem
 
@@ -285,23 +285,24 @@ Project announcements are posted on X: [@pushhub_dev](https://x.com/pushhub_dev)
 
 ## License
 
-push-hub is **source-available** software licensed under the [Business Source License 1.1](LICENSE) (BSL 1.1).
+push-hub is **Open Source** software licensed under the [Apache License 2.0](LICENSE).
 
-| Your use | License required |
-|----------|------------------|
-| Non-production use (development, testing, evaluation, PoC) | Free |
-| Production use by a Small Business (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates) | Free |
-| Non-Commercial Use | Free |
-| Any other production use | Commercial license |
-| Offering push-hub to third parties as a hosted or managed service | Not permitted under the BSL; requires a separate agreement |
+| What you want to do | Allowed? |
+|---------------------|----------|
+| Use push-hub in production, including commercial use, at any company size | Yes, free of charge |
+| Modify push-hub and redistribute it, including modified versions | Yes. Keep the [LICENSE](LICENSE) and [NOTICE](NOTICE) files and mark the files you changed |
+| Offer push-hub to others as a hosted or managed service | Yes |
+| Use the push-hub name or logo for your own product or service | No. The license does not grant trademark rights |
 
-Each tagged release automatically converts to the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) three years after its release date.
+push-hub is provided "as is", without warranty of any kind. This table is a summary; see [LICENSE](LICENSE) for the exact terms.
 
-See [LICENSE](LICENSE) for the exact terms. For commercial licensing, please contact **aianchor.lab@gmail.com**.
+Copyright 2026 Atsushi Inoue (https://github.com/aianchor-lab)
 
 ## Support Policy
 
 GitHub issues and questions are handled on a best-effort basis. Replies, fixes, and response times are not guaranteed, and there is no support SLA. To report a vulnerability, follow [SECURITY.md](SECURITY.md).
+
+If your company relies on push-hub and wants to support its development, please contact **aianchor.lab@gmail.com**.
 
 ## Project Continuity
 
@@ -310,9 +311,8 @@ GitHub issues and questions are handled on a best-effort basis. Replies, fixes, 
 We cannot guarantee how long active development of push-hub will continue. Instead of promising that, we make sure you are not stranded if it stops:
 
 * **It keeps running without us.** push-hub depends only on your PostgreSQL. There is no license server, telemetry, or other connection to us, so your deployment keeps working even if the project ends.
-* **Early open-source release on discontinuation.** If we stop developing push-hub, we will release the latest version under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) at that time, instead of waiting for the three-year Change Date. You can then maintain, fork, and run it yourself without restriction.
+* **You can take it over.** push-hub is licensed under the Apache License 2.0, so you can maintain, fork, and run it yourself without restriction, whether or not we are still developing it.
 * **Advance notice.** We will announce a discontinuation at least 6 months in advance, in this repository and on X ([@pushhub_dev](https://x.com/pushhub_dev)).
-* **Short commercial terms.** Commercial licenses are sold for one year at a time, with no multi-year prepayment. If we discontinue push-hub during a paid term, the unused portion will be refunded.
 
 ## Contributing
 

@@ -98,7 +98,7 @@ Demand validation comes first. Features are built in this order:
 * **Air-gapped environments:** customers can copy images to their own registry (ECR / Artifact Registry / ACR / Harbor). A procedure using `docker save` tar archives is also provided.
 * **Supply chain:** images are signed with cosign and shipped with an SBOM.
 * **Version pinning:** images are tagged `vX.Y.Z` in addition to `latest`, and can be pinned by digest.
-* There is no separate commercial image. The same image is distributed to everyone, and commercial use is governed by contract.
+* There is a single image, distributed to everyone under the Apache License 2.0.
 
 ## 6. Admin UI (Future)
 
@@ -117,12 +117,13 @@ Requirements for custom UIs, which must be designed **before** the first API rel
 
 ## 7. Licensing in the Product
 
-push-hub is licensed under BSL 1.1 (see [LICENSE](../LICENSE)). The product follows these rules:
+push-hub is licensed under the Apache License 2.0 (see [LICENSE](../LICENSE)). The open source product contains no license checks of any kind.
+
+If an open-core commercial edition is introduced later (see [PRD §3](PRD.md#3-business-model--licensing)), it follows these rules:
 
 * **No online license checks.** Phoning home would contradict the data governance promise and would not work in air-gapped environments.
-* **No blocking or nagging.** BSL compliance is enforced by contract, not by the software.
-* **Easy self-assessment:** users can quickly tell whether their use is free (see the [README](../README.md#license)).
-* **Prepared for paid features:** features that may become paid (SSO, RBAC, audit logs, data retention settings) are structured so that they can be moved into an `ee/` directory later.
+* **No blocking or nagging.** Commercial terms are enforced by contract, not by the software.
+* **The open source core stays complete.** Features that may become paid (SSO, RBAC, audit logs, data retention settings) are structured so that they can live in a separate `ee/` directory under a separate license. Delivery itself is never moved out of the open source core.
 
 ### 7.1 Signed License Keys
 
