@@ -41,7 +41,7 @@
 
   <main id="top">
     <div class="container hero">
-      <p class="badge"><span class="dot" aria-hidden="true"></span>開発中 · 需要検証フェーズ · source-available</p>
+      <p class="badge"><span class="dot" aria-hidden="true"></span>開発中 · 需要検証フェーズ · オープンソース</p>
       <h1>プッシュ通知のデータを、自社インフラの外に出さない。</h1>
       <p class="lead">push-hub は企業向けのセルフホスト型プッシュ通知配信エンジンです。自社の VPC やオンプレミスにデプロイし、データを SaaS 事業者に渡さずに APNs / FCM 通知を送信できます。</p>
       <div class="cta">
@@ -190,17 +190,16 @@ $ curl http://localhost:8080/healthz
     <section id="license" aria-labelledby="license-title">
       <div class="container">
         <p class="eyebrow">ライセンス</p>
-        <h2 id="license-title">BSL 1.1 による source-available。</h2>
-        <p class="section-lead">push-hub は source-available であり、オープンソースではありません。各リリースはリリース日から3年後に自動的に Apache License 2.0 に移行します。</p>
+        <h2 id="license-title">Apache 2.0 のオープンソース。</h2>
+        <p class="section-lead">push-hub は、企業規模を問わず、商用の本番利用も含めて無料で利用できます。</p>
         <div class="table-wrap">
           <table>
-            <thead><tr><th scope="col">利用形態</th><th scope="col">ライセンス</th></tr></thead>
+            <thead><tr><th scope="col">やりたいこと</th><th scope="col">可否</th></tr></thead>
             <tbody>
-              <tr><td>本番以外の利用（開発、テスト、評価、PoC）</td><td><span class="pill pill-free">無料</span></td></tr>
-              <tr><td>Small Business による本番利用（関連会社を含め、従業員・契約者が100名未満かつ年間売上が1000万米ドル未満）</td><td><span class="pill pill-free">無料</span></td></tr>
-              <tr><td>非商用利用</td><td><span class="pill pill-free">無料</span></td></tr>
-              <tr><td>上記以外の本番利用</td><td><span class="pill pill-paid">商用ライセンス</span></td></tr>
-              <tr><td>第三者向けのホスティング・マネージドサービスとしての提供</td><td><span class="pill pill-no">不可</span></td></tr>
+              <tr><td>本番環境での利用（商用利用を含む、企業規模を問わない）</td><td><span class="pill pill-free">無料</span></td></tr>
+              <tr><td>改変・再配布（LICENSE と NOTICE ファイルを残すこと）</td><td><span class="pill pill-free">可</span></td></tr>
+              <tr><td>第三者向けのホスティング・マネージドサービスとしての提供</td><td><span class="pill pill-free">可</span></td></tr>
+              <tr><td>push-hub の名称・ロゴを自社の製品やサービスに使うこと</td><td><span class="pill pill-no">許諾なし</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -208,15 +207,11 @@ $ curl http://localhost:8080/healthz
       </div>
     </section>
 
-    <!-- Placeholder: the real pre-order button and click tracking are added in #16 -->
-    <section id="preorder" aria-labelledby="preorder-title">
-      <div class="container preorder">
-        <div>
-          <p class="eyebrow">商用ライセンス</p>
-          <h2 id="preorder-title">事前予約 — 近日公開。</h2>
-          <p class="section-lead" style="margin-bottom:0">商用ライセンスに関心がある方は <a href="mailto:aianchor.lab@gmail.com">aianchor.lab@gmail.com</a> までご連絡ください。</p>
-        </div>
-        <a class="btn" role="link" aria-disabled="true">事前予約（近日公開）</a>
+    <section id="sponsor" aria-labelledby="sponsor-title">
+      <div class="container">
+        <p class="eyebrow">企業の方へ</p>
+        <h2 id="sponsor-title">業務で push-hub をお使いですか？</h2>
+        <p class="section-lead" style="margin-bottom:0">push-hub の開発を支援していただける企業の方は、<a href="mailto:aianchor.lab@gmail.com">aianchor.lab@gmail.com</a> までご連絡ください。</p>
       </div>
     </section>
 
@@ -242,7 +237,7 @@ $ curl http://localhost:8080/healthz
 
   <footer class="site-footer">
     <div class="container">
-      <span>© 2026 push-hub · BSL 1.1</span>
+      <span>© 2026 push-hub · Apache-2.0</span>
       <nav aria-label="フッター">
         <a href="https://github.com/aianchor-lab/push-hub">GitHub</a>
         <a href="https://x.com/pushhub_dev">X</a>

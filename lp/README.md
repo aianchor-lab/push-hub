@@ -40,5 +40,4 @@ One-time setup: **Settings → Pages → Build and deployment → Source: GitHub
 
 ## TODO
 
-* Replace the pre-order placeholder (`#preorder`) with the real button and click tracking (#16).
 * Once the production domain is fixed, make the `hreflang` links absolute and update the `og:url` / `og:image` URLs, which currently point to GitHub Pages.
