@@ -308,7 +308,7 @@ If your company relies on push-hub and wants to support its development, please 
 
 > **Draft:** these commitments are a draft and may change before the first release.
 
-push-hub is developed by an individual, and we cannot guarantee how long active development will continue. Instead of promising that, we make sure you are not stranded if it stops:
+We cannot guarantee how long active development of push-hub will continue. Instead of promising that, we make sure you are not stranded if it stops:
 
 * **It keeps running without us.** push-hub depends only on your PostgreSQL. There is no license server, telemetry, or other connection to us, so your deployment keeps working even if the project ends.
 * **You can take it over.** push-hub is licensed under the Apache License 2.0, so you can maintain, fork, and run it yourself without restriction, whether or not we are still developing it.
