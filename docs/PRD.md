@@ -17,6 +17,8 @@
 
 * **Support:** Best-effort, with no SLA. See the [Support Policy](../README.md#support-policy).
 
+* **Continuity:** Continued development is not guaranteed. Customers are protected instead by early Apache 2.0 release on discontinuation, at least 6 months' notice, and one-year commercial terms with pro-rata refunds. See [Project Continuity](../README.md#project-continuity).
+
 ## 2. Target Personas & Pain Points
 
 ### 2.1 Target Users
@@ -116,6 +118,7 @@ The following items are undecided and will be updated in this document once deci
 | 3 | Web admin console (Dashboard UI) | To be decided based on feedback after the initial release |
 | 4 | Corporate CLA | Not yet drafted; contributions on behalf of companies are not accepted until it exists |
 | 5 | Legal review of LICENSE parameters and CLA | Required before accepting external PRs |
+| 6 | Legal form of the continuity commitments (early Apache 2.0 release, notice period, refunds) | Draft in README; to be reflected in the commercial license agreement after legal review |
 
 ## 6. Change Log
 
@@ -127,3 +130,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-11-05 | Add architecture draft (ARCHITECTURE.md) and WIP README |
 | 2026-11-06 | Add observability plan to README and ARCHITECTURE.md |
 | 2026-11-08 | Raise the Small Business revenue limit to US$10M; state that replies to issues and questions are not guaranteed; move operating and commercial notes out of this document |
+| 2026-11-09 | Add project continuity commitments (README) and related open question |
