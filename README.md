@@ -307,7 +307,7 @@ GitHub issues and questions are handled on a best-effort basis. Replies, fixes, 
 
 > **Draft:** these commitments are a draft and may change before the first release.
 
-push-hub is developed by an individual, and we cannot guarantee how long active development will continue. Instead of promising that, we make sure you are not stranded if it stops:
+We cannot guarantee how long active development of push-hub will continue. Instead of promising that, we make sure you are not stranded if it stops:
 
 * **It keeps running without us.** push-hub depends only on your PostgreSQL. There is no license server, telemetry, or other connection to us, so your deployment keeps working even if the project ends.
 * **Early open-source release on discontinuation.** If we stop developing push-hub, we will release the latest version under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) at that time, instead of waiting for the three-year Change Date. You can then maintain, fork, and run it yourself without restriction.
