@@ -1,9 +1,9 @@
 # Product Requirements Document (PRD)
 
 > **Status:** Draft
-> **Last updated:** 2026-11-12
+> **Last updated:** 2026-11-13
 >
-> This document is a working draft. Its contents, including licensing and scope, may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
+> This document is a working draft. Its contents, including licensing and scope, may change as development proceeds and feedback arrives. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
 
 ## 1. Project Overview
 
@@ -13,7 +13,7 @@
 
 * **Vision:** Provide a robust, lightweight push delivery platform that can be deployed with a single command inside a company's own infrastructure (VPC / on-premises), for companies struggling with the high cost (pay-per-use pricing) and the data governance / regional constraints of SaaS-based push delivery services.
 
-* **Approach:** Strictly follow a **"Demand Validation First"** approach: evaluate demand before seriously writing production code.
+* **Approach:** Build a minimal working version first (immediate delivery, device registration, bounce handling), then promote it and learn from real usage. Until then, interest is gauged by GitHub stars and issues.
 
 * **Support:** Best-effort, with no SLA. See the [Support Policy](../README.md#support-policy).
 
@@ -126,3 +126,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-11-08 | Raise the Small Business revenue limit to US$10M; state that replies to issues and questions are not guaranteed; move operating and commercial notes out of this document |
 | 2026-11-09 | Add project continuity commitments (README) and related open question |
 | 2026-11-12 | Change the license from BSL 1.1 to Apache License 2.0; keep the CLA; simplify the continuity commitments |
+| 2026-11-13 | Replace the "Demand Validation First" approach with building a minimal version first; drop the survey |

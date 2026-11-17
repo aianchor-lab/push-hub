@@ -1,6 +1,6 @@
 # push-hub landing page
 
-Pre-launch landing page for push-hub, used for demand validation. Plain static HTML and CSS: no build step, no JavaScript, no external fonts or trackers.
+Pre-launch landing page for push-hub. Plain static HTML and CSS: no build step, no JavaScript, no external fonts or trackers.
 
 ```text
 lp/

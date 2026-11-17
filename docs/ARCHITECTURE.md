@@ -1,9 +1,9 @@
 # Architecture
 
 > **Status:** Draft
-> **Last updated:** 2026-11-06
+> **Last updated:** 2026-11-13
 >
-> This document is a working draft of the architecture direction for push-hub. No production code exists yet, and the design may change based on the results of demand validation. Undecided items are marked **TBD** and tracked in [Open Questions](#9-open-questions). For product goals and licensing, see the [PRD](PRD.md).
+> This document is a working draft of the architecture direction for push-hub. No production code exists yet, and the design may change during development. Undecided items are marked **TBD** and tracked in [Open Questions](#9-open-questions). For product goals and licensing, see the [PRD](PRD.md).
 
 ## 1. Design Principles
 
@@ -77,7 +77,7 @@ The same container image is used for every role. On Kubernetes, each role runs a
 
 ## 4. Roadmap Priority
 
-Demand validation comes first. Features are built in this order:
+Features are built in this order:
 
 1. **MVP:** immediate delivery, device registration, bounce handling
 2. Scheduled delivery and delivery analytics

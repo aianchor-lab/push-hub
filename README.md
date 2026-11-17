@@ -2,8 +2,8 @@
 
 A self-hosted push notification delivery engine for enterprises. Deploy it inside your own VPC or on-premises, and send APNs / FCM notifications without handing your data to a SaaS provider.
 
-> **Status: Work in progress — demand validation.**
-> push-hub is in the demand validation phase. There is no production code yet, and the scope described here may change. push-hub is **Open Source** under the [Apache License 2.0](LICENSE).
+> **Status: Work in progress.**
+> push-hub is under development. There is no production code yet, and the scope described here may change. push-hub is **Open Source** under the [Apache License 2.0](LICENSE).
 
 ## The Problem
 
@@ -264,22 +264,19 @@ Example log line:
 {"ts":"2026-11-05T12:00:02Z","level":"info","msg":"notification delivered","message_id":"msg_01JC8Z6A1B2C3D4E5F6G7H8J9K","platform":"ios","request_id":"req_01JC8Z7M9N0P1Q2R3S4T5U6V7W"}
 ```
 
-Metric names and log fields are not final. If you need specific metrics or integrations, let us know in an [issue](https://github.com/aianchor-lab/push-hub/issues) or the [survey](#support-the-project).
+Metric names and log fields are not final. If you need specific metrics or integrations, let us know in an [issue](https://github.com/aianchor-lab/push-hub/issues).
 
 ## Support the Project
 
-push-hub is in the demand validation phase: whether we build it depends on whether enough teams actually need it. You can help in two ways.
+push-hub is under development. If your team needs self-hosted push delivery, please **⭐ star this repository**. Stars show us how many teams need it, and starring lets you follow progress.
 
-* **⭐ Star this repository.** Stars are one of the signals we use to decide whether to start production development. Starring also lets you follow progress.
-* **📝 Answer the [3-minute survey](https://docs.google.com/forms/d/e/1FAIpQLSfy40dCmbFtYYkesl8lL9IoW6KyR2qLuC6Wm4MJOnWRVuYOQQ/viewform?usp=dialog).** Tell us how you send push notifications today and what is holding you back.
-
-We especially want to hear from teams that:
+push-hub is built for teams that:
 
 * cannot send customer data or device tokens to a push SaaS for compliance or contractual reasons,
 * are paying a growing "SaaS Tax" on push delivery volume, or
 * need to run push delivery on-premises or in an air-gapped environment.
 
-Survey answers are used only to evaluate demand for push-hub. We will not contact you unless you leave contact details and ask us to.
+If you have a specific requirement, tell us in an [issue](https://github.com/aianchor-lab/push-hub/issues).
 
 Project announcements are posted on X: [@pushhub_dev](https://x.com/pushhub_dev).
 
