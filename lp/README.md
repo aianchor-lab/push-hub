@@ -1,6 +1,6 @@
 # push-hub landing page
 
-Pre-launch landing page for push-hub, used for demand validation. Plain static HTML and CSS: no build step, no JavaScript, no external fonts or trackers.
+Pre-launch landing page for push-hub. Plain static HTML and CSS: no build step, no JavaScript, no external fonts or trackers.
 
 ```text
 lp/
@@ -40,5 +40,4 @@ One-time setup: **Settings → Pages → Build and deployment → Source: GitHub
 
 ## TODO
 
-* Replace the pre-order placeholder (`#preorder`) with the real button and click tracking (#16).
 * Once the production domain is fixed, make the `hreflang` links absolute and update the `og:url` / `og:image` URLs, which currently point to GitHub Pages.

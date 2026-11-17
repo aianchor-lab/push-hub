@@ -6,23 +6,17 @@ Issues and pull requests are reviewed on a best-effort basis. We do not guarante
 
 ## License
 
-push-hub is **source-available** software licensed under the [Business Source License 1.1](LICENSE) (BSL 1.1). It is not an Open Source license.
+push-hub is **Open Source** software licensed under the [Apache License 2.0](LICENSE).
 
-Copyright (c) 2026 Atsushi Inoue (https://github.com/aianchor-lab)
+Copyright 2026 Atsushi Inoue (https://github.com/aianchor-lab)
 
-- **Free to use:** non-production use (development, testing, evaluation, PoC), production use by Small Businesses (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates), and Non-Commercial Use.
-- **Not permitted without a commercial license:** any other production use, and offering push-hub to third parties as a hosted or managed service.
-- **Becomes Open Source:** each tagged release automatically converts to the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) three years after its release date.
-
-See [LICENSE](LICENSE) for the exact terms. For commercial licensing, please contact **aianchor.lab@gmail.com**.
-
-Contributions are accepted under the terms of the [Contributor License Agreement](CLA.md), which grants broader rights than the BSL, including relicensing under commercial licenses.
+Contributions are accepted under the terms of the [Contributor License Agreement](CLA.md). Your contributions are distributed to everyone under the Apache License 2.0. The CLA also lets the project owner offer the project under other terms in the future, such as a commercial edition.
 
 ## Contributor License Agreement (CLA)
 
 > **Note:** The CLA is currently a draft pending legal review. We are not accepting external pull requests until a reviewed version has been published.
 
-All contributions require agreement to the [push-hub Contributor License Agreement](CLA.md). The CLA is a license, not a copyright assignment: you keep the copyright in your contributions, while the project can offer them under both the BSL and commercial licenses. The license also carries over to any future successor of the project, such as a company formed to maintain it.
+All contributions require agreement to the [push-hub Contributor License Agreement](CLA.md). The CLA is a license, not a copyright assignment: you keep the copyright in your contributions, while the project can distribute them under the Apache License 2.0 and, in the future, under other terms such as a commercial edition. The license also carries over to any future successor of the project, such as a company formed to maintain it.
 
 We collect signatures with [CLA Assistant](https://cla-assistant.io/):
 

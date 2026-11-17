@@ -2,8 +2,8 @@
 
 A self-hosted push notification delivery engine for enterprises. Deploy it inside your own VPC or on-premises, and send APNs / FCM notifications without handing your data to a SaaS provider.
 
-> **Status: Work in progress — demand validation.**
-> push-hub is in the demand validation phase. There is no production code yet, and the scope described here may change. push-hub is **source-available** under the [Business Source License 1.1](LICENSE), not Open Source.
+> **Status: Work in progress.**
+> push-hub is under development. There is no production code yet, and the scope described here may change. push-hub is **Open Source** under the [Apache License 2.0](LICENSE).
 
 ## The Problem
 
@@ -264,44 +264,42 @@ Example log line:
 {"ts":"2026-11-05T12:00:02Z","level":"info","msg":"notification delivered","message_id":"msg_01JC8Z6A1B2C3D4E5F6G7H8J9K","platform":"ios","request_id":"req_01JC8Z7M9N0P1Q2R3S4T5U6V7W"}
 ```
 
-Metric names and log fields are not final. If you need specific metrics or integrations, let us know in an [issue](https://github.com/aianchor-lab/push-hub/issues) or the [survey](#support-the-project).
+Metric names and log fields are not final. If you need specific metrics or integrations, let us know in an [issue](https://github.com/aianchor-lab/push-hub/issues).
 
 ## Support the Project
 
-push-hub is in the demand validation phase: whether we build it depends on whether enough teams actually need it. You can help in two ways.
+push-hub is under development. If your team needs self-hosted push delivery, please **⭐ star this repository**. Stars show us how many teams need it, and starring lets you follow progress.
 
-* **⭐ Star this repository.** Stars are one of the signals we use to decide whether to start production development. Starring also lets you follow progress.
-* **📝 Answer the [3-minute survey](https://docs.google.com/forms/d/e/1FAIpQLSfy40dCmbFtYYkesl8lL9IoW6KyR2qLuC6Wm4MJOnWRVuYOQQ/viewform?usp=dialog).** Tell us how you send push notifications today and what is holding you back.
-
-We especially want to hear from teams that:
+push-hub is built for teams that:
 
 * cannot send customer data or device tokens to a push SaaS for compliance or contractual reasons,
 * are paying a growing "SaaS Tax" on push delivery volume, or
 * need to run push delivery on-premises or in an air-gapped environment.
 
-Survey answers are used only to evaluate demand for push-hub. We will not contact you unless you leave contact details and ask us to.
+If you have a specific requirement, tell us in an [issue](https://github.com/aianchor-lab/push-hub/issues).
 
 Project announcements are posted on X: [@pushhub_dev](https://x.com/pushhub_dev).
 
 ## License
 
-push-hub is **source-available** software licensed under the [Business Source License 1.1](LICENSE) (BSL 1.1).
+push-hub is **Open Source** software licensed under the [Apache License 2.0](LICENSE).
 
-| Your use | License required |
-|----------|------------------|
-| Non-production use (development, testing, evaluation, PoC) | Free |
-| Production use by a Small Business (fewer than 100 employees and contractors, and less than US$10M in annual revenue, including affiliates) | Free |
-| Non-Commercial Use | Free |
-| Any other production use | Commercial license |
-| Offering push-hub to third parties as a hosted or managed service | Not permitted under the BSL; requires a separate agreement |
+| What you want to do | Allowed? |
+|---------------------|----------|
+| Use push-hub in production, including commercial use, at any company size | Yes, free of charge |
+| Modify push-hub and redistribute it, including modified versions | Yes. Keep the [LICENSE](LICENSE) and [NOTICE](NOTICE) files and mark the files you changed |
+| Offer push-hub to others as a hosted or managed service | Yes |
+| Use the push-hub name or logo for your own product or service | No. The license does not grant trademark rights |
 
-Each tagged release automatically converts to the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) three years after its release date.
+push-hub is provided "as is", without warranty of any kind. This table is a summary; see [LICENSE](LICENSE) for the exact terms.
 
-See [LICENSE](LICENSE) for the exact terms. For commercial licensing, please contact **aianchor.lab@gmail.com**.
+Copyright 2026 Atsushi Inoue (https://github.com/aianchor-lab)
 
 ## Support Policy
 
 GitHub issues and questions are handled on a best-effort basis. Replies, fixes, and response times are not guaranteed, and there is no support SLA. To report a vulnerability, follow [SECURITY.md](SECURITY.md).
+
+If your company relies on push-hub and wants to support its development, please contact **aianchor.lab@gmail.com**.
 
 ## Project Continuity
 
@@ -310,9 +308,8 @@ GitHub issues and questions are handled on a best-effort basis. Replies, fixes, 
 We cannot guarantee how long active development of push-hub will continue. Instead of promising that, we make sure you are not stranded if it stops:
 
 * **It keeps running without us.** push-hub depends only on your PostgreSQL. There is no license server, telemetry, or other connection to us, so your deployment keeps working even if the project ends.
-* **Early open-source release on discontinuation.** If we stop developing push-hub, we will release the latest version under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) at that time, instead of waiting for the three-year Change Date. You can then maintain, fork, and run it yourself without restriction.
+* **You can take it over.** push-hub is licensed under the Apache License 2.0, so you can maintain, fork, and run it yourself without restriction, whether or not we are still developing it.
 * **Advance notice.** We will announce a discontinuation at least 6 months in advance, in this repository and on X ([@pushhub_dev](https://x.com/pushhub_dev)).
-* **Short commercial terms.** Commercial licenses are sold for one year at a time, with no multi-year prepayment. If we discontinue push-hub during a paid term, the unused portion will be refunded.
 
 ## Contributing
 
