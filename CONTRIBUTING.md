@@ -10,29 +10,33 @@ push-hub is **Open Source** software licensed under the [Apache License 2.0](LIC
 
 Copyright 2026 Atsushi Inoue (https://github.com/aianchor-lab)
 
-Contributions are accepted under the terms of the [Contributor License Agreement](CLA.md). Your contributions are distributed to everyone under the Apache License 2.0. The CLA also lets the project owner offer the project under other terms in the future, such as a commercial edition.
+Contributions are licensed under the Apache License 2.0, the same license as the project.
 
-## Contributor License Agreement (CLA)
+## Developer Certificate of Origin (DCO)
 
-> **Note:** The CLA is currently a draft pending legal review. We are not accepting external pull requests until a reviewed version has been published.
+push-hub uses the [Developer Certificate of Origin 1.1](https://developercertificate.org/) instead of a Contributor License Agreement. By adding a `Signed-off-by` line to a commit, you certify that you wrote the contribution or otherwise have the right to submit it under the project's license. You keep the copyright in your contributions.
 
-All contributions require agreement to the [push-hub Contributor License Agreement](CLA.md). The CLA is a license, not a copyright assignment: you keep the copyright in your contributions, while the project can distribute them under the Apache License 2.0 and, in the future, under other terms such as a commercial edition. The license also carries over to any future successor of the project, such as a company formed to maintain it.
+Sign off each commit with `-s`:
 
-We collect signatures with [CLA Assistant](https://cla-assistant.io/):
+```sh
+git commit -s -m "Fix retry delay calculation"
+```
 
-1. When you open a pull request, the CLA Assistant bot comments on it with a link.
-2. Follow the link and sign the CLA with your GitHub account.
-3. The CLA check on the pull request turns green, and the pull request can then be reviewed.
+This adds a line with the name and email from your git configuration:
 
-You only need to sign once. **Every pull request requires a signed CLA, including small changes such as typo fixes. There are no exceptions.**
+```
+Signed-off-by: Your Name <you@example.com>
+```
 
-If you are contributing on behalf of a company or other organization, please contact **aianchor.lab@gmail.com** first to arrange a Corporate CLA.
+* **Every commit in a pull request needs a sign-off**, including small changes such as typo fixes. Pull requests with unsigned commits cannot be merged.
+* To sign off commits you have already made, run `git rebase --signoff main` and force-push the branch.
+* If you contribute as part of your job, make sure your employer allows you to contribute under the Apache License 2.0. No separate company agreement is needed.
 
 ## Reporting Bugs and Requesting Features
 
 - Search existing [issues](https://github.com/aianchor-lab/push-hub/issues) before opening a new one.
 - When reporting a bug, include steps to reproduce it, the expected and actual behavior, and your environment (OS, deployment method, version or commit hash).
-- Please do not paste code you want included in the project into issues. Submit it as a pull request so that it is covered by the CLA. Code posted in issues will not be incorporated into the project.
+- Please do not paste code you want included in the project into issues. Submit it as a pull request with a signed-off commit. Code posted in issues will not be incorporated into the project.
 
 **Do not report security vulnerabilities through public issues.** Please follow [SECURITY.md](SECURITY.md) instead.
 
@@ -41,4 +45,4 @@ If you are contributing on behalf of a company or other organization, please con
 1. Fork the repository and create a branch from `main`.
 2. Keep each pull request focused on a single change.
 3. Describe what the change does and why it is needed. Link related issues where applicable.
-4. Sign the CLA as described above.
+4. Sign off every commit as described above.

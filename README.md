@@ -3,7 +3,7 @@
 A self-hosted push notification delivery engine for enterprises. Deploy it inside your own VPC or on-premises, and send APNs / FCM notifications without handing your data to a SaaS provider.
 
 > **Status: Work in progress.**
-> push-hub is under development. There is no production code yet, and the scope described here may change. push-hub is **Open Source** under the [Apache License 2.0](LICENSE).
+> push-hub is under development. There is no production code yet, and the scope described here may change. The first release will be v1.0.0; see the [Roadmap](docs/ROADMAP.md). push-hub is **Open Source** under the [Apache License 2.0](LICENSE).
 
 ## The Problem
 
@@ -65,7 +65,8 @@ flowchart LR
 * **Delivery flow:** your application server calls the REST API, `api` enqueues a job in PostgreSQL, and `worker` picks it up and sends it to APNs / FCM. For scheduled deliveries, `scheduler` enqueues the job when it is due.
 * **Storage:** device tokens, recipient attributes, notification content, delivery logs, and analytics all stay in your own PostgreSQL.
 * **The only traffic leaving your network is `worker` → APNs / FCM.** There is no telemetry and no license check.
-* **Open tracking (optional):** APNs and FCM do not report opens, so your app reports them to `api` through `POST /v1/events`.
+* **Open tracking (optional):** APNs and FCM do not report opens, so your app reports them to `api` through `POST /v1/events` on the client port, using a public client key. You can also relay these requests through your own server.
+* **Admin UI:** a web UI for sending, scheduling, analytics, recipients, and settings is planned for v1.0.
 * **Monitoring:** your own Prometheus and log collector pull metrics and logs from push-hub.
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the architecture direction.
@@ -130,11 +131,14 @@ Docker Compose is intended for trials and small deployments. For production, use
 > **Draft:** this is a mock specification published for feedback. It may change before the first release.
 
 * Base path: `/v1`. Requests and responses are JSON.
-* Authentication: `Authorization: Bearer <PUSHHUB_API_KEY>`. API keys are for server-to-server use only; browser-safe authentication is still TBD.
+* Authentication: `Authorization: Bearer <key>`. There are two kinds of keys ([ADR-0011](docs/adr/0011-client-keys-and-client-port.md)):
+  * **Server API keys** are secret and for server-to-server use only. Never put them in an app or a browser.
+  * **Client keys** are public and can be embedded in apps. They can only register a device and report events, on a separate client port that you may expose to the internet. An optional JWT signed by your server prevents one user from acting as another.
+* The admin UI signs in with server-side sessions, not API keys ([ADR-0008](docs/adr/0008-admin-authentication-and-authorization.md)).
 
 ### Register a device — `POST /v1/devices`
 
-Registers a device token, or updates it if it already exists.
+Registers a device token, or updates it if it already exists. Call it from your server with a server API key, or from the app on the client port with a client key.
 
 ```http
 POST /v1/devices
@@ -202,7 +206,7 @@ Content-Type: application/json
 
 ### Report an open event — `POST /v1/events` (optional)
 
-APNs and FCM do not report opens, so your app reports them here.
+APNs and FCM do not report opens, so your app reports them here, on the client port with a client key. Each notification carries its `message_id` in the custom data.
 
 ```http
 POST /v1/events
@@ -313,9 +317,7 @@ We cannot guarantee how long active development of push-hub will continue. Inste
 
 ## Contributing
 
-Contributions require agreement to the [Contributor License Agreement](CLA.md). See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-> **Note:** we are not accepting external pull requests until a legally reviewed version of the CLA has been published.
+Contributions are made under the [Developer Certificate of Origin](https://developercertificate.org/): sign off each commit with `git commit -s`. There is no CLA. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Security
 

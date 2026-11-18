@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 > **Status:** Draft
-> **Last updated:** 2026-11-13
+> **Last updated:** 2026-11-18
 >
 > This document is a working draft. Its contents, including licensing and scope, may change as development proceeds and feedback arrives. Undecided items are marked **TBD** and tracked in [Open Questions](#5-open-questions).
 
@@ -13,7 +13,7 @@
 
 * **Vision:** Provide a robust, lightweight push delivery platform that can be deployed with a single command inside a company's own infrastructure (VPC / on-premises), for companies struggling with the high cost (pay-per-use pricing) and the data governance / regional constraints of SaaS-based push delivery services.
 
-* **Approach:** Build a minimal working version first (immediate delivery, device registration, bounce handling), then promote it and learn from real usage. Until then, interest is gauged by GitHub stars and issues.
+* **Approach:** Build a working product first, then promote it and learn from real usage ([ADR-0002](adr/0002-build-first.md)). The first release is **v1.0.0 (GA)**, with no alpha or beta releases and no target date ([ADR-0003](adr/0003-first-release-is-ga.md)). Until then, interest is gauged by GitHub stars and issues. See the [Roadmap](ROADMAP.md).
 
 * **Support:** Best-effort, with no SLA. See the [Support Policy](../README.md#support-policy).
 
@@ -45,7 +45,7 @@
 
 ## 3. Business Model & Licensing
 
-* **Model:** Open Source first. Adoption and real-world usage come before revenue. Revenue, if any, comes later from corporate sponsorship and paid help with deployments. An open-core commercial edition may be considered once demand is proven.
+* **Model:** Open Source first. Adoption and real-world usage come before revenue. Every v1.0 feature, including the admin UI, SSO, and roles, is in the open source edition ([ADR-0004](adr/0004-admin-ui-in-ga-all-features-open-source.md)). Revenue, if any, comes later from corporate sponsorship and paid help with deployments. An open-core commercial edition may be considered once demand is proven.
 
 * **License:** **Apache License 2.0** — see [LICENSE](../LICENSE) and [NOTICE](../NOTICE). Free for any use, including commercial production use.
 
@@ -55,23 +55,9 @@
 
   * **Hosted offerings by third parties are allowed.** push-hub's value is running inside the user's own infrastructure, so a third-party SaaS serves a different market. The project name is protected by trademark rather than by the license.
 
-  * **Alternatives considered:** BSL 1.1 was adopted on 2026-10-28 and replaced on 2026-11-12, because it slows enterprise adoption, which is the priority at this stage. AGPLv3 was not adopted because many enterprises do not allow it. Licenses that forbid competing services (FSL, Elastic License) are not Open Source and have the same adoption problem as the BSL.
+  * **Alternatives considered:** BSL 1.1 (2026-10-28 to 2026-11-12), AGPLv3, FSL, and the Elastic License. See [ADR-0001](adr/0001-apache-2-0-license.md).
 
-* **CLA (Contributor License Agreement):** Required for all external contributors, so that contributions can also be included in a possible future commercial edition. See [CLA.md](../CLA.md) and [CONTRIBUTING.md](../CONTRIBUTING.md).
-
-  * **License-type CLA** (based on the Apache ICLA): contributors keep their copyright and grant a non-exclusive license.
-
-  * The CLA allows sublicensing on any terms, including commercial licenses.
-
-  * The license extends to the Project Owner's **successors and assigns**.
-
-  * Contributors agree not to exercise their **moral rights** (Articles 18–20 of the Japanese Copyright Act), so contributions can be modified and included in commercial versions.
-
-  * Governing law is Japan, and the Tokyo District Court has exclusive jurisdiction.
-
-  * The CLA is versioned. External PRs are not accepted until a version reviewed by legal counsel has been published.
-
-  * Signatures are collected per PR with **CLA Assistant**. It must be installed before the first external PR is accepted, and every PR goes through it, including small ones. Code posted in issues is not incorporated.
+* **Contributions:** made under the **Developer Certificate of Origin (DCO) 1.1** and licensed under the Apache License 2.0 ([ADR-0013](adr/0013-dco-instead-of-cla.md)). Each commit carries a `Signed-off-by` line, checked in CI. There is no CLA. See [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## 4. Technical Requirements
 
@@ -83,13 +69,9 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for the architecture direction that imple
 
 * **Interface:** RESTful JSON API (application server ⇔ this engine ⇔ APNs / FCM).
 
-* **UI policy (web admin console, TBD):**
+* **Admin UI:** v1.0 includes a web admin UI for sending, scheduling, delivery history and analytics, recipients and segments, and settings ([ADR-0004](adr/0004-admin-ui-in-ga-all-features-open-source.md)). It is built without a build step ([ADR-0005](adr/0005-no-build-admin-ui.md)), uses only the public API, and can be disabled. Customization is limited to branding and themes; custom screens are built on the public API with a bundled AI skill ([ADR-0006](adr/0006-ui-customization-and-ai-skill.md)).
 
-  * In the initial phase, focus solely on providing the core features (API and delivery middleware); no UI will be built.
-
-  * Whether a web admin console (Dashboard UI) is needed will be considered in the future, based on user feedback and needs after the initial release.
-
-  * Operational monitoring is based on integration with standard external tools (Prometheus / Grafana, etc.).
+* **Operational monitoring** is based on integration with standard external tools (Prometheus / Grafana, etc.).
 
 ### 4.2 Observability Requirements
 
@@ -101,6 +83,18 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for the architecture direction that imple
 
 * **Dashboard:** Include a sample Grafana dashboard definition (JSON).
 
+### 4.3 Scope of v1.0
+
+Defined in [ADR-0007](adr/0007-v1-feature-scope.md): immediate delivery, device registration, bounce handling, multiple apps per installation, scheduled delivery, delivery analytics, users and devices with tags and segments, open tracking through the client API, rich push, the admin UI, and Helm with signed images and an SBOM. Huawei (HMS) and Web Push are not in v1.0.
+
+### 4.4 Security Requirements
+
+* **Admin sign-in:** server-side sessions, local users with TOTP, optional OIDC, and roles (Admin, Sender, Viewer) assigned per app ([ADR-0008](adr/0008-admin-authentication-and-authorization.md)).
+* **Keys:** secret server API keys with scopes, and public client keys that can only register devices and report events, served on a separate client port ([ADR-0011](adr/0011-client-keys-and-client-port.md)).
+* **Stored secrets:** encrypted with envelope encryption; the key-encryption key is a master key or a KMS through the Kubernetes KMS v2 plugin protocol ([ADR-0010](adr/0010-secret-encryption-and-kms-plugins.md)).
+* **Audit:** audit events are written to the structured log ([ADR-0009](adr/0009-audit-events-to-stdout.md)).
+* **Release criteria:** see [ADR-0012](adr/0012-v1-quality-bar-and-test-strategy.md).
+
 ## 5. Open Questions
 
 The following items are undecided and will be updated in this document once decided.
@@ -109,10 +103,9 @@ The following items are undecided and will be updated in this document once deci
 |---|-------|----------------|
 | 1 | License | **Decided:** Apache License 2.0 (changed from BSL 1.1 on 2026-11-12) |
 | 2 | Monetization (corporate sponsorship, paid deployment help, possible open-core edition) | Not yet defined; revisit once real-world usage is established |
-| 3 | Web admin console (Dashboard UI) | To be decided based on feedback after the initial release |
-| 4 | Corporate CLA | Not yet drafted; contributions on behalf of companies are not accepted until it exists |
-| 5 | Legal review of the CLA | Required before accepting external PRs |
-| 6 | Trademark protection for the project name | Under consideration |
+| 3 | Web admin console (Dashboard UI) | **Decided:** included in v1.0 ([ADR-0004](adr/0004-admin-ui-in-ga-all-features-open-source.md)) |
+| 4 | Contribution terms | **Decided:** DCO instead of a CLA ([ADR-0013](adr/0013-dco-instead-of-cla.md)) |
+| 5 | Trademark protection for the project name | Under consideration |
 
 ## 6. Change Log
 
@@ -127,3 +120,4 @@ The following items are undecided and will be updated in this document once deci
 | 2026-11-09 | Add project continuity commitments (README) and related open question |
 | 2026-11-12 | Change the license from BSL 1.1 to Apache License 2.0; keep the CLA; simplify the continuity commitments |
 | 2026-11-13 | Replace the "Demand Validation First" approach with building a minimal version first; drop the survey |
+| 2026-11-18 | Add ADRs and the roadmap; first release is v1.0.0 (GA); add the admin UI, v1.0 scope, and security requirements; replace the CLA with the DCO |
